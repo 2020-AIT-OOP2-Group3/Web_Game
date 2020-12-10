@@ -29,7 +29,6 @@
 - ３人CPUとプレイヤーで４人対戦　
 
 ## 参考になるWebサイト
-[https://goworkship.com/magazine/free-bootstrap-50-template-theme/][Cssのテンプレート集]
 [https://qiita.com/Umemiya/items/5caefcf4f6a38ab68be1][カードのライブラリ]
 
 
