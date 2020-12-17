@@ -25,7 +25,7 @@ def add_account():
     #新規ユーザの情報をそれぞれ変数に格納
     item = {}
     item["id"] = y_email
-    item["pass"] = y_pass
+    item["pas"] = y_pass
     item["point"] = 0
     item["name"] = y_name
     json_data.append(item)
