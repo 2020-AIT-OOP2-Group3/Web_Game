@@ -49,6 +49,16 @@ def create_account():
     return render_template('create_account.html')
 
 
+@app.route('/menu/')
+def menu():
+    return render_template('menu.html')
+
+
+@app.route('/menu/', methods=['POST'])
+def menu_POST():
+    return render_template('menu.html')
+
+
 @app.context_processor
 def override_url_for():
     return dict(url_for=dated_url_for)
