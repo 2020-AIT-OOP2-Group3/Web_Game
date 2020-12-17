@@ -1,7 +1,8 @@
 [
     {
-        "id" : "hoge",
-        "pas" : "fuga",
-        "point" : 100
+        "id": "hoge@jp",
+        "name": "piyo",
+        "pas": "fuga",
+        "point": 0
     }
 ]
