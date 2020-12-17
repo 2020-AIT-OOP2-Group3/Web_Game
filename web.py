@@ -31,15 +31,20 @@ def add_account():
     json_data.append(item)
 
     #idが重複したかの確認
+    for i in json_data:
+        if  i["id"]== y_email:  #一致するIDがあった場合
+            err = "すでに登録されたIDです"  
+            return render_template('create_account.html',
+                                     err=err)
 
-    #player.jsonに書き込み
-    with open('player.json', 'w') as f:
-        json.dump(json_data, f, ensure_ascii=False, indent=4, sort_keys=True, separators=(',', ': '))
+        else: #一致するIDが無かった場合
+            #player.jsonに書き込み
+            with open('player.json', 'w') as f:
+                json.dump(json_data, f, ensure_ascii=False, indent=4, sort_keys=True, separators=(',', ': '))
 
-    return jsonify({
-        "status": "append completed"
-    })
-
+            return jsonify({
+                "status": "append completed"
+            })
 
 #ーーーーーーーーーーーーーーーーーーーーーーーーメールアドレスとパスワードの取得ーーーーーーーーーーーーーーーーーーーーーー#
 @app.route('/login', methods=["GET"])
