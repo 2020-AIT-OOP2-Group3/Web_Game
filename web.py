@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, url_for
+from flask import Flask, request, render_template, url_for, jsonify
 import os
 import json
 
@@ -9,7 +9,39 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+#ーーーーーーーーーーーーーーーーーーーーーーーー新規登録ーーーーーーーーーーーーーーーーーーーーーー#
+@app.route('/add_account', methods=["POST"])
+def add_account():
 
+    #新規ユーザ情報の取得
+    y_name = request.form.get('nickname', None)
+    y_email = request.form.get('email', None)
+    y_pass = request.form.get('password', None)
+
+    #player.jsonを開き、json_dataに格納
+    with open('player.json') as f:
+        json_data = json.load(f)
+
+    #新規ユーザの情報をそれぞれ変数に格納
+    item = {}
+    item["id"] = y_email
+    item["pas"] = y_pass
+    item["point"] = 0
+    item["name"] = y_name
+    json_data.append(item)
+
+    #idが重複したかの確認
+
+    #player.jsonに書き込み
+    with open('player.json', 'w') as f:
+        json.dump(json_data, f, ensure_ascii=False, indent=4, sort_keys=True, separators=(',', ': '))
+
+    return jsonify({
+        "status": "append completed"
+    })
+
+
+#ーーーーーーーーーーーーーーーーーーーーーーーーメールアドレスとパスワードの取得ーーーーーーーーーーーーーーーーーーーーーー#
 @app.route('/login', methods=["GET"])
 def login():
 
@@ -43,16 +75,11 @@ def login():
                            err=err)
 
 
-@app.route('/create_account/')
-def create_account():
-    return render_template('create_account.html')
-
-
-@app.route('/menu/')
-def menu():
+@app.route('/menu/', methods=['POST'])
+def menu_POST():
     return render_template('menu.html')
-
-
+  
+  
 @app.context_processor
 def override_url_for():
     return dict(url_for=dated_url_for)
@@ -63,10 +90,14 @@ def dated_url_for(endpoint, **values):
         filename = values.get('filename', None)
         if filename:
             file_path = os.path.join(app.root_path,
-                                     endpoint, filename)
+                                    endpoint, filename)
             values['q'] = int(os.stat(file_path).st_mtime)
     return url_for(endpoint, **values)
 
+
+@app.route('/create_account')
+def create_account():
+    return render_template('create_account.html')
 
 if __name__ == '__main__':
     app.run(host="localhost", port=8080, debug=True)
