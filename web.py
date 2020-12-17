@@ -34,20 +34,21 @@ def add_account():
 
     # idが重複したかの確認
     for i in json_data:
-        if i["id"] == y_email:  # 一致するIDがあった場合
-            err = "すでに登録されたIDです"
+        if  i["id"] == y_email:  #一致するIDがあった場合
+            err = "すでに登録されたIDです"  
             return render_template('create_account.html',
-                                   err=err)
+                                    err = err
+                                    )
 
-        else:  # 一致するIDが無かった場合
-            # player.jsonに書き込み
-            with open('player.json', 'w') as f:
-                json.dump(json_data, f, ensure_ascii=False, indent=4,
-                          sort_keys=True, separators=(',', ': '))
+    #一致するIDが無かった場合
+    #player.jsonに書き込み
+    with open('player.json', 'w') as f:
+        json.dump(json_data, f, ensure_ascii=False, indent=4, sort_keys=True, separators=(',', ': '))
 
-            return jsonify({
-                "status": "append completed"
-            })
+
+    return jsonify({
+        "status": "append completed"
+    })
 
 #ーーーーーーーーーーーーーーーーーーーーーーーーメールアドレスとパスワードの取得ーーーーーーーーーーーーーーーーーーーーーー#
 
