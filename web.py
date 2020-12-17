@@ -61,25 +61,25 @@ def login():
             if i["pas"] == l_pas:  # メールアドレスとパスワードが一致していたらログインしてゲーム画面へ
                 print(f"pas O ,i:{i}")
                 return render_template('menu.html',  # ゲーム画面のHTML
-                                       point=i["point"],
-                                       name=i["name"])
+                                    point=i["point"],
+                                    name=i["name"])
             else:
                 print("pas X")
                 err = "IDとパスワードが一致しません"  # IDは存在するがパスワードが合っていない場合
                 return render_template('index.html',
-                                       err=err)
+                                    err=err)
 
     print("ID X")
     err = "登録されていないIDです"  # IDが見つからなかった場合
     return render_template('create_account.html',
-                           err=err)
+                        err=err)
 
 
 @app.route('/menu/', methods=['POST'])
 def menu_POST():
     return render_template('menu.html')
-  
-  
+
+
 @app.context_processor
 def override_url_for():
     return dict(url_for=dated_url_for)
