@@ -137,3 +137,8 @@ h2 {
    font-weight: normal;
    color: #fff;
 }
+
+.error {
+  text-align: center;
+  color: rgb(255, 88, 88);
+}
