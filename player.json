@@ -2,6 +2,7 @@
     {
         "id" : "hoge@jp",
         "pas" : "fuga",
-        "point" : 0
+        "point" : 0,
+        "name" : "piyo"
     }
 ]

@@ -14,8 +14,8 @@ def index():
 def login():
 
     # メールアドレスとパスワードの取得
-    l_id = request.form.get("email")
-    l_pas = request.form.get("password")
+    l_id = request.args.get("email")
+    l_pas = request.args.get("password")
 
     print(f"login id = {l_id} , password = {l_pas}")
 
@@ -27,13 +27,20 @@ def login():
         if i["id"] == l_id:
             print("id O")
             if i["pas"] == l_pas:  # メールアドレスとパスワードが一致していたらログインしてゲーム画面へ
-                print(f"pas O ,{i}")
+                print(f"pas O ,i:{i}")
                 return render_template('.html',  # ゲーム画面のHTML
-                                        login_id=i["id"],
-                                        password=i["pas"],
-                                        point=i["point"])
+                                        point=i["point"],
+                                        name=i["name"])
+            else:
+                print("pas X")
+                err = "IDとパスワードが一致しません"  # IDは存在するがパスワードが合っていない場合
+                return render_template('index.html',
+                                        err=err)
 
-    return render_template('index.html')
+    print("ID X")
+    err = "登録されていないIDです"  # IDが見つからなかった場合
+    return render_template('create_account.html',
+                            err=err)
 
 
 
