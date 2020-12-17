@@ -22,6 +22,8 @@
         <div class="form-wrapper">
             <h1>新規アカウント作成</h1>
             <form action="/add_account" method="POST">
+            <h3 class="error">{{err}}</h3>
+            <form>
                 <div class="form-item">
                     <label for="email"></label>
                     <input type="text" name="nickname" required="required" placeholder="ニックネーム"></input>
