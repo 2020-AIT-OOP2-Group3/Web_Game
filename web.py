@@ -115,6 +115,26 @@ def dated_url_for(endpoint, **values):
 def create_account():
     return render_template('create_account.html')
 
+# じゃんけん脳トレ -スタートページ-
+@app.route('/janken/start/', methods=["GET"])
+def janken_start():
+    return render_template('janken_notore/janken_start.html')
+
+# じゃんけん脳トレ -プレイページ-
+@app.route('/janken/play/')
+def janken_play():
+    return render_template('janken_notore/janken_play.html')
+
+# じゃんけん脳トレ -結果ページ-
+@app.route('/janken/result/', methods=["POST"])
+def janken_result():
+    #合ってた回数を取得
+    OK_times = request.form.get('OK_times')
+    #間違ってた回数を取得
+    NG_times = request.form.get("NG_times")
+    #ここにポイント数計算のプログラムを入れる予定
+    return render_template('janken_notore/janken_result.html',OK_times=OK_times,NG_times=NG_times)
+
 
 if __name__ == '__main__':
     app.run(host="localhost", port=8080, debug=True)
