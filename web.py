@@ -1,9 +1,9 @@
-from flask import Flask, request, render_template, url_for, jsonify
+from flask import Flask, request, render_template, url_for, jsonify,session
 import os
 import json
 
 app = Flask(__name__)
-
+app.secret_key = 'd!kaHIQo8RE1Eb4a2ari'
 
 @app.route('/')
 def index():
@@ -70,6 +70,11 @@ def login():
         if i["id"] == l_id:
             print("id O")
             if i["pas"] == l_pas:  # メールアドレスとパスワードが一致していたらログインしてゲーム画面へ
+                session["id"] = i["id"]
+                session["name"] = i["name"]
+                session["pas"] = i["pas"]
+                session["point"] = i["point"]
+
                 print(f"pas O ,i:{i}")
                 return render_template('menu.html',  # ゲーム画面のHTML
                                        point=i["point"],
@@ -118,7 +123,8 @@ def create_account():
 # じゃんけん脳トレ -スタートページ-
 @app.route('/janken/start/', methods=["GET"])
 def janken_start():
-    return render_template('janken_notore/janken_start.html')
+    id=session.get("id")
+    return render_template('janken_notore/janken_start.html',id=id)
 
 # じゃんけん脳トレ -プレイページ-
 @app.route('/janken/play/')
