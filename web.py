@@ -5,8 +5,7 @@ import json
 app = Flask(__name__)
 app.secret_key = 'd!kaHIQo8RE1Eb4a2ari'
 
-global session  # アカウント情報保存用のグローバル変数
-global jsonnum  # jsonファイル上でのアカウントの位置の保存用
+global jsonnum  # jsonファイル上でのアカウントの位置情報保存用のグローバル変数
 
 @app.route('/')
 def index():
@@ -79,14 +78,16 @@ def login():
             if i["pas"] == l_pas:  # メールアドレスとパスワードが一致していたらログインしてゲーム画面へ
 
                 #ログイン時にユーザーのID、名前、パスワード、ポイント数をクライアント側(ブラウザ上)に保存
-                global session  # グローバル変数に保管
-
-                session = i
+                
+                session["id"] = i["id"]
+                session["pas"] = i["pas"]
+                session["name"] = i["name"]
+                session["point"] = i["point"]
 
                 print(f"pas O ,account:{session}")
                 return render_template('menu.html',  # ゲーム画面のHTML
-                                       point=session["point"],
-                                       name=session["name"])
+                                       point=i["point"],
+                                       name=i["name"])
             else:
                 print("pas X")
                 err = "IDとパスワードが一致しません"  # IDは存在するがパスワードが合っていない場合
@@ -107,7 +108,6 @@ def menu_POST():
 
 @app.route('/menu/', methods=['GET'])
 def menu_GET():
-    global session
     return render_template('menu.html',  # ゲーム画面のHTML
                                        point=session["point"],
                                        name=session["name"])
@@ -150,8 +150,7 @@ def janken_play():
 @app.route('/janken/result/', methods=["POST"])
 def janken_result():
 
-    global session  # グローバル変数の読み込み
-    global jsonnum
+    global jsonnum  # グローバル変数の読み込み
 
     #合ってた回数を取得
     OK_times = request.form.get('OK_times')
@@ -162,7 +161,7 @@ def janken_result():
 
     #現在のポイント数を取得
     point = session["point"]
-    # point=int(point)
+    point=int(point)
 
     get_point = 0  # 変数の宣言
 
@@ -183,19 +182,25 @@ def janken_result():
     #反映後の現在のポイント数
     point = point + get_point
 
+    session["point"] = point
+
     #ここで、JSONデータに現在のポイントを保存する処理(JSON担当の方お願いします)
     with open('player.json') as f:  # jsonファイルの読み込み
         json_data = json.load(f)
-    
-    session["point"] = point
 
     print(f"before : {json_data[jsonnum]}")
 
-    json_data[jsonnum] = session
+    i = {}
+    i["id"] = session["id"]
+    i["pas"] = session["pas"]
+    i["name"] = session["name"]
+    i["point"] = session["point"]
+
+    json_data[jsonnum] = i  # jsonファイルのアカウント情報を書き換え
 
     print(f"after : {json_data[jsonnum]}")
 
-    with open('player.json', 'w') as f:  # jsonファイルに書き込み
+    with open('player.json', 'w') as f:  # jsonファイルに書き込んで上書き保存
         json.dump(json_data, f, ensure_ascii=False, indent=4, sort_keys=True, separators=(',', ': '))
 
     return render_template('janken_notore/janken_result.html',OK_times=OK_times,NG_times=NG_times,point=point,get_point=get_point)
