@@ -70,6 +70,8 @@ def login():
         if i["id"] == l_id:
             print("id O")
             if i["pas"] == l_pas:  # メールアドレスとパスワードが一致していたらログインしてゲーム画面へ
+
+                #ログイン時にユーザーのID、名前、パスワード、ポイント数をクライアント側(ブラウザ上)に保存
                 session["id"] = i["id"]
                 session["name"] = i["name"]
                 session["pas"] = i["pas"]
@@ -123,8 +125,7 @@ def create_account():
 # じゃんけん脳トレ -スタートページ-
 @app.route('/janken/start/', methods=["GET"])
 def janken_start():
-    id=session.get("id")
-    return render_template('janken_notore/janken_start.html',id=id)
+    return render_template('janken_notore/janken_start.html')
 
 # じゃんけん脳トレ -プレイページ-
 @app.route('/janken/play/')
@@ -134,12 +135,36 @@ def janken_play():
 # じゃんけん脳トレ -結果ページ-
 @app.route('/janken/result/', methods=["POST"])
 def janken_result():
+
     #合ってた回数を取得
     OK_times = request.form.get('OK_times')
+    OK_times = int(OK_times)
     #間違ってた回数を取得
     NG_times = request.form.get("NG_times")
-    #ここにポイント数計算のプログラムを入れる予定
-    return render_template('janken_notore/janken_result.html',OK_times=OK_times,NG_times=NG_times)
+    NG_times = int(NG_times)
+
+    #現在のポイント数を取得
+    point=session.get("point")
+    point=int(point)
+
+    #-獲得ポイント算出-
+    #間違ってた回数が10回以上　or (正解した回数 - 間違ってた回数)が0回以下
+    if NG_times >= 10 or (OK_times - NG_times) <= 0:
+        get_point = 0
+    #(正解した回数 - 間違ってた回数)が10回を下回る
+    elif (OK_times - NG_times) < 10:
+        get_point = (OK_times - NG_times) * 0.5
+    #(正解した回数 - 間違ってた回数)が10回以上
+    elif (OK_times - NG_times) >= 10:
+        get_point = 5 + 3*(OK_times - NG_times -10)
+    #獲得ポイントを四捨五入
+    get_point = round(get_point)
+    #反映後の現在のポイント数
+    point += get_point
+
+    #ここで、JSONデータに現在のポイントを保存する処理(JSON担当の方お願いします)
+
+    return render_template('janken_notore/janken_result.html',OK_times=OK_times,NG_times=NG_times,point=point,get_point=get_point)
 
 
 if __name__ == '__main__':
