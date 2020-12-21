@@ -43,7 +43,7 @@ function make_question(){
 hand1.addEventListener('click', function() {
   //解いた問題の数
   int_kaisu += 1;
-  kaisu.innerText = int_kaisu;
+  kaisu.innerText = int_kaisu + "回目";
   if(question == "win"){
     if(hand1.value <= 3){
       OKs.push("OK");
@@ -71,7 +71,7 @@ hand1.addEventListener('click', function() {
 hand2.addEventListener('click', function() {
   //解いた問題の数
   int_kaisu += 1;
-  kaisu.innerText = int_kaisu;
+  kaisu.innerText = int_kaisu　+ "回目";
   if(question == "win"){
     if(hand2.value >= 4){
       OKs.push("OK");
