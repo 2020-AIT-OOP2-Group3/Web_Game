@@ -15,6 +15,8 @@ var hand2=document.querySelector("#hand2");//じゃんけんの手(右側)
 const startTime = Date.now();//ゲームスタート時刻
 var OK_times = document.querySelector("#OK_times");//"正解数"
 var NG_times = document.querySelector("#NG_times");//"不正解数"
+var kaisu = document.querySelector("#kaisu"); //解いた問題の数
+var int_kaisu = 0; //解いた問題の数
 
 var question = ""
 
@@ -39,6 +41,9 @@ function make_question(){
 
 //左側の手がクリックされた時
 hand1.addEventListener('click', function() {
+  //解いた問題の数
+  int_kaisu += 1;
+  kaisu.innerText = int_kaisu;
   if(question == "win"){
     if(hand1.value <= 3){
       OKs.push("OK");
@@ -64,6 +69,9 @@ hand1.addEventListener('click', function() {
 
 //右側の手がクリックされた時
 hand2.addEventListener('click', function() {
+  //解いた問題の数
+  int_kaisu += 1;
+  kaisu.innerText = int_kaisu;
   if(question == "win"){
     if(hand2.value >= 4){
       OKs.push("OK");
