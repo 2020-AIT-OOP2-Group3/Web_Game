@@ -16,6 +16,8 @@ const startTime = Date.now();//ゲームスタート時刻
 var OK_times = document.querySelector("#OK_times");//"正解数"
 var NG_times = document.querySelector("#NG_times");//"不正解数"
 
+var question = ""
+
 /*
 問題を表示する関数
 */
@@ -23,8 +25,10 @@ function make_question(){
   var question_text_num = Math.floor(Math.random()*2);
   if(question_text_num == 0){
     document.querySelector("#question_text").innerText = "どっちが勝ち？"
+    question = "win"
   }else{
     question_text.innerText = "どっちが負け？"
+    question = "lose"
   }
   question_hands = hands[Math.floor(Math.random() * hands.length)];
   hand1.innerHTML = "<img src='" + question_hands[3] + "'width=290 height=270>"
@@ -35,21 +39,51 @@ function make_question(){
 
 //左側の手がクリックされた時
 hand1.addEventListener('click', function() {
+  if(question == "win"){
+    if(hand1.value <= 3){
+      OKs.push("OK");
+    }else{
+      NGs.push("NG");
+    }
+  }else{
+    if(hand1.value >= 4){
+      OKs.push("OK");
+    }else{
+      NGs.push("NG");
+    }
+  }
+  /*
   if(hand1.value <= 3){
     OKs.push("OK");
   }else{
     NGs.push("NG");
   }
+  */
   make_question();
 },false);
 
 //右側の手がクリックされた時
 hand2.addEventListener('click', function() {
+  if(question == "win"){
+    if(hand2.value >= 4){
+      OKs.push("OK");
+    }else{
+      NGs.push("NG");
+    }
+  }else{
+    if(hand2.value <= 3){
+      OKs.push("OK");
+    }else{
+      NGs.push("NG");
+    }
+  }
+  /*
   if(hand2.value >= 3){
     OKs.push("OK");
   }else{
     NGs.push("NG");
   }
+  */
   make_question();
 },false);
 
