@@ -27,9 +27,9 @@ function make_question(){
     question_text.innerText = "どっちが負け？"
   }
   question_hands = hands[Math.floor(Math.random() * hands.length)];
-  hand1.innerHTML = "<img src='" + question_hands[3] + "'>"
+  hand1.innerHTML = "<img src='" + question_hands[3] + "'width=290 height=270>"
   hand1.value = question_hands[0];
-  hand2.innerHTML = "<img src='" + question_hands[4] + "'>"
+  hand2.innerHTML = "<img src='" + question_hands[4] + "'width=290 height=270>"
   hand2.value = question_hands[0];
 }
 

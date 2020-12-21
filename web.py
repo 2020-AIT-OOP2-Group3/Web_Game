@@ -5,6 +5,9 @@ import json
 app = Flask(__name__)
 app.secret_key = 'd!kaHIQo8RE1Eb4a2ari'
 
+global session  # アカウント情報保存用のグローバル変数
+global jsonnum  # jsonファイル上でのアカウントの位置の保存用
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -65,27 +68,31 @@ def login():
     with open('player.json') as f:  # jsonファイルの読み込み
         json_data = json.load(f)
 
+    global jsonnum
+    jsonnum = 0
+
     for i in json_data:
+        print(jsonnum)
         print(i)
         if i["id"] == l_id:
             print("id O")
             if i["pas"] == l_pas:  # メールアドレスとパスワードが一致していたらログインしてゲーム画面へ
 
                 #ログイン時にユーザーのID、名前、パスワード、ポイント数をクライアント側(ブラウザ上)に保存
-                session["id"] = i["id"]
-                session["name"] = i["name"]
-                session["pas"] = i["pas"]
-                session["point"] = i["point"]
+                global session  # グローバル変数に保管
 
-                print(f"pas O ,i:{i}")
+                session = i
+
+                print(f"pas O ,account:{session}")
                 return render_template('menu.html',  # ゲーム画面のHTML
-                                       point=i["point"],
-                                       name=i["name"])
+                                       point=session["point"],
+                                       name=session["name"])
             else:
                 print("pas X")
                 err = "IDとパスワードが一致しません"  # IDは存在するがパスワードが合っていない場合
                 return render_template('index.html',
                                        err=err)
+        jsonnum += 1
 
     print("ID X")
     err = "登録されていないIDです"  # IDが見つからなかった場合
@@ -97,6 +104,13 @@ def login():
 def menu_POST():
     return render_template('menu.html')
 
+
+@app.route('/menu/', methods=['GET'])
+def menu_GET():
+    global session
+    return render_template('menu.html',  # ゲーム画面のHTML
+                                       point=session["point"],
+                                       name=session["name"])
 
 @app.route('/babanuki')
 def babanuki():
@@ -136,6 +150,9 @@ def janken_play():
 @app.route('/janken/result/', methods=["POST"])
 def janken_result():
 
+    global session  # グローバル変数の読み込み
+    global jsonnum
+
     #合ってた回数を取得
     OK_times = request.form.get('OK_times')
     OK_times = int(OK_times)
@@ -144,8 +161,10 @@ def janken_result():
     NG_times = int(NG_times)
 
     #現在のポイント数を取得
-    point=session.get("point")
-    point=int(point)
+    point = session["point"]
+    # point=int(point)
+
+    get_point = 0  # 変数の宣言
 
     #-獲得ポイント算出-
     #間違ってた回数が10回以上　or (正解した回数 - 間違ってた回数)が0回以下
@@ -158,11 +177,26 @@ def janken_result():
     elif (OK_times - NG_times) >= 10:
         get_point = 5 + 3*(OK_times - NG_times -10)
     #獲得ポイントを四捨五入
-    get_point = round(get_point)
+    print(get_point)
+    get_point = int(round(get_point))
+    print(get_point)
     #反映後の現在のポイント数
-    point += get_point
+    point = point + get_point
 
     #ここで、JSONデータに現在のポイントを保存する処理(JSON担当の方お願いします)
+    with open('player.json') as f:  # jsonファイルの読み込み
+        json_data = json.load(f)
+    
+    session["point"] = point
+
+    print(f"before : {json_data[jsonnum]}")
+
+    json_data[jsonnum] = session
+
+    print(f"after : {json_data[jsonnum]}")
+
+    with open('player.json', 'w') as f:  # jsonファイルに書き込み
+        json.dump(json_data, f, ensure_ascii=False, indent=4, sort_keys=True, separators=(',', ': '))
 
     return render_template('janken_notore/janken_result.html',OK_times=OK_times,NG_times=NG_times,point=point,get_point=get_point)
 
