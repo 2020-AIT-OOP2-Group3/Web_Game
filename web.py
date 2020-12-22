@@ -169,12 +169,12 @@ def janken_result():
     #間違ってた回数が10回以上　or (正解した回数 - 間違ってた回数)が0回以下
     if NG_times >= 10 or (OK_times - NG_times) <= 0:
         get_point = 0
-    #(正解した回数 - 間違ってた回数)が10回を下回る
-    elif (OK_times - NG_times) < 10:
-        get_point = (OK_times - NG_times) * 0.5
-    #(正解した回数 - 間違ってた回数)が10回以上
-    elif (OK_times - NG_times) >= 10:
-        get_point = 5 + 3*(OK_times - NG_times -10)
+    #(正解した回数 - 間違ってた回数)が20回を下回る
+    elif (OK_times - NG_times) < 20:
+        get_point = (OK_times - NG_times) * 0.3
+    #(正解した回数 - 間違ってた回数)が20回以上
+    elif (OK_times - NG_times) >= 20:
+        get_point = 6 + 1*(OK_times - NG_times -20)
     #獲得ポイントを四捨五入
     print(get_point)
     get_point = int(round(get_point))
