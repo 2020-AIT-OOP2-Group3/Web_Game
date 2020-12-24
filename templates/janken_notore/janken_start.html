@@ -2,13 +2,21 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>じゃんけん脳トレ</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='janken_notore/janken.css') }}">
 </head>
 <body>
-  <h1>じゃんけん脳トレ</h1>
-  <p>じゃんけんの勝ち負けを素早く判定できるか？</p>
-  <a href="/janken/play">スタート</a>
-  <span>{{id}}</span>
-  <h1>※所要時間は30秒です。</h1>
+  <header>
+    <h1>じゃんけん脳トレ</h1>
+  </header>
+  <div class="main-visual">  
+      <p>じゃんけんの勝ち負けを素早く判定できるか？</p>
+      <a href="/janken/play" class="button-start">スタート</a>
+      <p>※所要時間は30秒です。</p>
+      <span>{{id}}</span>
+      
+    </div>
+  </div>
 </body>
 </html>

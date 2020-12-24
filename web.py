@@ -48,7 +48,11 @@ def add_account():
         json.dump(json_data, f, ensure_ascii=False, indent=4, sort_keys=True, separators=(',', ': '))
 
 
-    return render_template('menu.html')
+    return render_template('econfirm_account.html',
+                            nickname=item["name"],
+                            email=item["id"],
+                            password=item["pass"],
+                            point=item["point"])
 
 #ーーーーーーーーーーーーーーーーーーーーーーーーメールアドレスとパスワードの取得ーーーーーーーーーーーーーーーーーーーーーー#
 

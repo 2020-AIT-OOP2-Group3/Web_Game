@@ -3,18 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>じゃんけん脳トレ結果</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='janken_notore/janken.css') }}">
 </head>
 <body>
-  <h1>結果</h1>
-  <span>合ってた回数:</span>
-  <span>{{OK_times}}</span>
-  <span>間違ってた回数:</span>
-  <span>{{NG_times}}</span>
-  <span>獲得ポイント</span>
-  <span>{{get_point}}</span>
-  <span>現在のポイント数</span>
-  <span>{{point}}</span>
+  <div class="main-visual">
+    <h1>結果</h1>
+    <span>合ってた回数:</span>
+    <span>{{OK_times}}</span>
+    <span>間違ってた回数:</span>
+    <span>{{NG_times}}</span>
+    <span>獲得ポイント</span>
+    <span>{{get_point}}</span>
+    <span>現在のポイント数</span>
+    <span>{{point}}</span>
   <a href="/menu/" class="button-return" method="POST">戻る</a>
+  </div>
 </body>
 </html>
