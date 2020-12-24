@@ -86,8 +86,10 @@ def add_account():
                                    err=err
                                    )
 
-    # 一致するIDが無かった場合
-    # player.jsonに書き込み
+    #一致するIDが無かった場合
+    #player.jsonに書き込み
+    global jsonnum
+    jsonnum = len(json_data)  # 新規登録したアカウントのjsonファイルでの位置を変数に保存
     with open('player.json', 'w') as f:
         json_data.append(item)
         json.dump(json_data, f, ensure_ascii=False, indent=4,
@@ -145,6 +147,36 @@ def login():
     return render_template('create_account.html',
                            err=err)
 
+#ーーーーーーーーーーーーーーーーーーーーーーーーランキングーーーーーーーーーーーーーーーーーーーーーー#
+
+
+@app.route('/ranking/')
+def ranking():
+    global jsonnum
+
+    with open('player.json') as f:  # jsonファイルの読み込み
+        json_data = json.load(f)
+
+    rank = 1
+    num = 0
+
+    for i in json_data:
+        if(jsonnum != num):
+            if(session["point"] < i["point"]):  # 得点が低い場合、順位が下がる
+                rank += 1
+                print(f"player{jsonnum+1} < player{num+1} rank : {rank}")
+            else:                               # 得点が同じか大きい場合、順位は変わらない
+                print(f"player{jsonnum+1} >= player{num+1} rank : {rank}")
+        num += 1
+
+    print(f"finaly rank : {rank}")
+
+    rank_data = sorted(json_data, key=lambda x:x["point"], reverse=True)  # ポイントが高い順に並べ替えたリストを作る
+
+    return render_template('ranking.html',
+                            rank=rank,
+                            rank_data=rank_data)
+    
 
 @app.route('/menu/', methods=['POST'])
 def menu_POST():
@@ -154,9 +186,8 @@ def menu_POST():
 @app.route('/menu/', methods=['GET'])
 def menu_GET():
     return render_template('menu.html',  # ゲーム画面のHTML
-                           point=session["point"],
-                           name=session["name"])
-
+                            point=session["point"],
+                            name=session["name"])
 
 @app.route('/babanuki')
 def babanuki():
