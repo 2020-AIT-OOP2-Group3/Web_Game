@@ -213,7 +213,12 @@ def dated_url_for(endpoint, **values):
 def create_account():
     return render_template('create_account.html')
 
-#ーーーーーーーーーーーーーーーーーーーーーーーーじゃんけん脳トレーーーーーーーーーーーーーーーーーーーーーー#
+#ーーーーーーーーーーーーーーーーーーーーーーーー脳トレーーーーーーーーーーーーーーーーーーーーーー#
+#  脳トレ -脳トレメニュー-
+@app.route('/notore_menu', methods=["GET"])
+def notore_menu():
+    return render_template('notore_menu.html')
+
 # じゃんけん脳トレ -スタートページ-
 
 
