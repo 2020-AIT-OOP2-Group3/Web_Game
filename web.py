@@ -32,7 +32,6 @@ def add_account():
     item["pas"] = y_pass
     item["point"] = 0
     item["name"] = y_name
-    json_data.append(item)
 
     # idが重複したかの確認
     for i in json_data:
@@ -45,12 +44,11 @@ def add_account():
     #一致するIDが無かった場合
     #player.jsonに書き込み
     with open('player.json', 'w') as f:
+        json_data.append(item)
         json.dump(json_data, f, ensure_ascii=False, indent=4, sort_keys=True, separators=(',', ': '))
 
 
-    return jsonify({
-        "status": "append completed"
-    })
+    return render_template('menu.html')
 
 #ーーーーーーーーーーーーーーーーーーーーーーーーメールアドレスとパスワードの取得ーーーーーーーーーーーーーーーーーーーーーー#
 

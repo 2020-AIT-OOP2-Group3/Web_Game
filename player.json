@@ -10,5 +10,11 @@
         "name": "あいうえお",
         "pas": "123",
         "point": 0
+    },
+    {
+        "id": "hihi@js",
+        "name": "haha",
+        "pas": "fufu@js",
+        "point": 0
     }
 ]
