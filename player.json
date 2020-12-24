@@ -3,24 +3,30 @@
         "id": "hoge@jp",
         "name": "piyo",
         "pas": "fuga",
-        "point": 0
+        "point": 500
     },
     {
         "id": "aiueo@jp",
         "name": "あいうえお",
         "pas": "123",
-        "point": 0
+        "point": 400
     },
     {
         "id": "hihi@js",
         "name": "haha",
         "pas": "fufu@js",
-        "point": 0
+        "point": 300
     },
     {
-        "id": "nana@ka",
-        "name": "なな",
-        "pas": "kkakaka",
-        "point": 0
+        "id": "aaa@a",
+        "name": "aaa",
+        "pas": "aaa",
+        "point": 200
+    },
+    {
+        "id": "bbb@b",
+        "name": "bbb",
+        "pas": "bbb",
+        "point": 100
     }
 ]
