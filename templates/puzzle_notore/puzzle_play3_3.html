@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="{{ url_for('static', filename='puzzle_notore/puzzle.css') }}">
+  <title>パズル脳トレ</title>
+</head>
+
+<body onload="make_question()">
+  <h1 id="remaining_time"></h1>
+  <div id="question_piece" class="dropFreespace" ondragover="dragover(event)" ondrop="freedrop(event)" draggable = false dragenter="dragenter(event)" dragover="dragover(event)"></div>
+  <div class="DROP">
+    <div id="drop1" class="dp" ondragover="dragover(event)" ondrop="drop(event)" draggable = false dragenter="dragenter(event)" dragover="dragover(event)"></div>
+    <div id="drop2" class="dp" ondragover="dragover(event)" ondrop="drop(event)" draggable = false dragenter="dragenter(event)" dragover="dragover(event)"></div>
+    <div id="drop3" class="dp" ondragover="dragover(event)" ondrop="drop(event)" draggable = false dragenter="dragenter(event)" dragover="dragover(event)"></div>
+    <div id="drop4" class="dp clear_box" ondragover="dragover(event)" ondrop="drop(event)" draggable = false dragenter="dragenter(event)" dragover="dragover(event)"></div>
+    <div id="drop5" class="dp" ondragover="dragover(event)" ondrop="drop(event)" draggable = false dragenter="dragenter(event)" dragover="dragover(event)"></div>
+    <div id="drop6" class="dp" ondragover="dragover(event)" ondrop="drop(event)" draggable = false dragenter="dragenter(event)" dragover="dragover(event)"></div>
+    <div id="drop7" class="dp clear_box" ondragover="dragover(event)" ondrop="drop(event)" draggable = false dragenter="dragenter(event)" dragover="dragover(event)"></div>
+    <div id="drop8" class="dp" ondragover="dragover(event)" ondrop="drop(event)" draggable = false dragenter="dragenter(event)" dragover="dragover(event)"></div>
+    <div id="drop9" class="dp" ondragover="dragover(event)" ondrop="drop(event)" draggable = false dragenter="dragenter(event)" dragover="dragover(event)"></div>
+  </div>
+  <script defer src="{{ url_for('static', filename='puzzle_notore/puzzle_play.js') }}"></script>
+</body>
+
+</html>

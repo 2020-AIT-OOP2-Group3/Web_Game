@@ -1,0 +1,31 @@
+.DROP {
+  width: 1000px;
+  height: 100px;
+  display: block;
+  flex-wrap: wrap;
+
+}
+
+.clear_box {
+  clear: both;
+  /* 回り込みを解除する */
+}
+
+.dp {
+  width: 100px;
+  height: 100%;
+  float: left;
+  border: 1px solid;
+}
+
+.piece{
+  width: 100px;
+  height: 100px;
+}
+
+.dropFreespace{
+  width: 80%;
+  height: 230px;
+  margin-bottom: 30px;
+  border: 1px solid;
+}

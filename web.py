@@ -135,7 +135,8 @@ def dated_url_for(endpoint, **values):
 @app.route('/create_account')
 def create_account():
     return render_template('create_account.html')
-
+    
+#ーーーーーーーーーーーーーーーーーーーーーーーーじゃんけん脳トレーーーーーーーーーーーーーーーーーーーーーー#
 # じゃんけん脳トレ -スタートページ-
 @app.route('/janken/start/', methods=["GET"])
 def janken_start():
@@ -205,6 +206,16 @@ def janken_result():
 
     return render_template('janken_notore/janken_result.html',OK_times=OK_times,NG_times=NG_times,point=point,get_point=get_point)
 
+#ーーーーーーーーーーーーーーーーーーーーーーーーパズル脳トレーーーーーーーーーーーーーーーーーーーーーー#
+# パズル脳トレ -スタートページ-
+@app.route('/puzzle/start/', methods=["GET"])
+def puzzle_start():
+    return render_template('puzzle_notore/puzzle_start.html')
+
+# パズル脳トレ -プレイページ-
+@app.route('/puzzle/play3_3/')
+def puzzle_play():
+    return render_template('puzzle_notore/puzzle_play3_3.html')
 
 if __name__ == '__main__':
     app.run(host="localhost", port=8080, debug=True)
