@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <title>じゃんけん脳トレ</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='janken_notore/janken.css') }}">
 </head>
+
 <body onload="make_question()">
   <a href="/menu/" class="button-return" method="POST">中断</a>
   <!-- 残り時間の表示 -->
@@ -32,4 +34,5 @@
     <source class="hide" src="../../static/janken_notore/NG.mp3" type="audio/mp3">
   </audio>
 </body>
+
 </html>

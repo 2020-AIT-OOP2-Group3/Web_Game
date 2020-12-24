@@ -5,329 +5,329 @@
 
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
 [class*="fontawesome-"]:before {
-  font-family: 'FontAwesome', sans-serif;
+    font-family: 'FontAwesome', sans-serif;
 }
 
 /* Simple Reset */
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 /* body */
 
 body {
-  background: #e9e9e9;
-  color: #5e5e5e;
-  font: 400 87.5%/1.5em 'Open Sans', sans-serif;
+    background: #e9e9e9;
+    color: #5e5e5e;
+    font: 400 87.5%/1.5em 'Open Sans', sans-serif;
 }
 
 /* Form Layout */
 
 .form-wrapper {
-  background: #fafafa;
-  padding: 0 1em;
-  width: 150%;
-  max-width: 370px;
+    background: #fafafa;
+    padding: 0 1em;
+    width: 150%;
+    max-width: 370px;
 }
 
 h1 {
-  text-align: center;
-  padding: 1em 0;
+    text-align: center;
+    padding: 1em 0;
 }
 
 form {
-  padding: 0 1.5em;
+    padding: 0 1.5em;
 }
 
 .form-item {
-  margin-bottom: 0.75em;
-  width: 100%;
+    margin-bottom: 0.75em;
+    width: 100%;
 }
 
 .form-item input {
-  background: #fafafa;
-  border: none;
-  border-bottom: 2px solid #e9e9e9;
-  color: #666;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1em;
-  height: 50px;
-  transition: border-color 0.3s;
-  width: 100%;
+    background: #fafafa;
+    border: none;
+    border-bottom: 2px solid #e9e9e9;
+    color: #666;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+    height: 50px;
+    transition: border-color 0.3s;
+    width: 100%;
 }
 
 .form-item input:focus {
-  border-bottom: 2px solid #c0c0c0;
-  outline: none;
+    border-bottom: 2px solid #c0c0c0;
+    outline: none;
 }
 
 .button-panel {
-  margin: 2em 0 0;
-  width: 100%;
+    margin: 2em 0 0;
+    width: 100%;
 }
 
 .button-panel .button {
-  background: #f16272;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  height: 50px;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.2em;
-  letter-spacing: 0.05em;
-  text-align: center;
-  text-transform: uppercase;
-  transition: background 0.3s ease-in-out;
-  width: 100%;
+    background: #f16272;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    height: 50px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2em;
+    letter-spacing: 0.05em;
+    text-align: center;
+    text-transform: uppercase;
+    transition: background 0.3s ease-in-out;
+    width: 100%;
 }
 
 .button:hover {
-  background: #ee3e52;
+    background: #ee3e52;
 }
 
 .form-footer {
-  font-size: 1em;
-  padding: 2em 0;
-  text-align: center;
+    font-size: 1em;
+    padding: 2em 0;
+    text-align: center;
 }
 
 .form-footer a {
-  color: #8c8c8c;
-  text-decoration: none;
-  transition: border-color 0.3s;
+    color: #8c8c8c;
+    text-decoration: none;
+    transition: border-color 0.3s;
 }
 
 .form-footer a:hover {
-  border-bottom: 1px dotted #8c8c8c;
+    border-bottom: 1px dotted #8c8c8c;
 }
 
 header {
-  padding: 0px 4% 10px;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: transparent;
-  display: flex;
-  align-items: center;
-  z-index: 1;
+    padding: 0px 4% 10px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    z-index: 1;
 }
 
 a {
-  text-decoration: none;
-  color: #fff;
+    text-decoration: none;
+    color: #fff;
 }
 
 nav {
-  margin: 0 0 0 auto;
+    margin: 0 0 0 auto;
 }
 
 ul {
-  list-style: none;
-  margin: 0;
-  display: flex;
+    list-style: none;
+    margin: 0;
+    display: flex;
 }
 
 li {
-  margin: 0 0 0 15px;
-  font-size: 14px;
-  color: white;
+    margin: 0 0 0 15px;
+    font-size: 14px;
+    color: white;
 }
 
 .main-visual {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: url('cards.jpg') top center / cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('cards.jpg') top center / cover no-repeat;
 }
 
 h2 {
-  margin: 0;
-  font-size: 30px;
-  font-weight: normal;
-  color: #fff;
+    margin: 0;
+    font-size: 30px;
+    font-weight: normal;
+    color: #fff;
 }
 
 .error {
-  text-align: center;
-  color: rgb(255, 88, 88);
+    text-align: center;
+    color: rgb(255, 88, 88);
 }
 
 .button-brain {
-  color: #FFF;
-  display: inline-block;
-  font-size: 16px;
-  font-weight: bold;
-  line-height: 45px;
-  width: 300px;
-  height: 300px;
-  position: relative;
-  text-decoration: none;
-  text-transform: uppercase;
-  border: 1px solid transparent;
-  outline: 1px solid;
-  outline-color: rgba(255, 255, 255, 0.5);
-  outline-offset: 0px;
-  text-shadow: none;
-  text-align: center;
-  padding-top: 250px;
-  transition: all 1.2s cubic-bezier(0.2, 1, 0.2, 1);
-  margin: 50px;
-  background: url('brain.jpg') top center / cover no-repeat;
-  z-index: 0;
+    color: #FFF;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 45px;
+    width: 300px;
+    height: 300px;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+    outline: 1px solid;
+    outline-color: rgba(255, 255, 255, 0.5);
+    outline-offset: 0px;
+    text-shadow: none;
+    text-align: center;
+    padding-top: 250px;
+    transition: all 1.2s cubic-bezier(0.2, 1, 0.2, 1);
+    margin: 50px;
+    background: url('brain.jpg') top center / cover no-repeat;
+    z-index: 0;
 }
 
 .button-brain:hover {
-  border-color: #FFF;
-  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
-  outline-color: transparent;
-  outline-offset: 12px;
-  text-shadow: 2px 2px 3px #000;
+    border-color: #FFF;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+    outline-color: transparent;
+    outline-offset: 12px;
+    text-shadow: 2px 2px 3px #000;
 }
 
 .button-babanuki {
-  color: #FFF;
-  display: inline-block;
-  font-size: 16px;
-  font-weight: bold;
-  line-height: 45px;
-  width: 300px;
-  height: 300px;
-  position: relative;
-  text-decoration: none;
-  text-transform: uppercase;
-  border: 1px solid transparent;
-  outline: 1px solid;
-  outline-color: rgba(255, 255, 255, 0.5);
-  outline-offset: 0px;
-  text-shadow: none;
-  text-align: center;
-  padding-top: 250px;
-  transition: all 1.2s cubic-bezier(0.2, 1, 0.2, 1);
-  margin: 50px;
-  background: url('joker.jpg') top center / cover no-repeat;
-  z-index: 0;
+    color: #FFF;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 45px;
+    width: 300px;
+    height: 300px;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+    outline: 1px solid;
+    outline-color: rgba(255, 255, 255, 0.5);
+    outline-offset: 0px;
+    text-shadow: none;
+    text-align: center;
+    padding-top: 250px;
+    transition: all 1.2s cubic-bezier(0.2, 1, 0.2, 1);
+    margin: 50px;
+    background: url('joker.jpg') top center / cover no-repeat;
+    z-index: 0;
 }
 
 .button-babanuki:hover {
-  border-color: #FFF;
-  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
-  outline-color: transparent;
-  outline-offset: 12px;
-  text-shadow: 2px 2px 3px #000;
+    border-color: #FFF;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+    outline-color: transparent;
+    outline-offset: 12px;
+    text-shadow: 2px 2px 3px #000;
 }
 
 .point {
-  color: white;
-  position: absolute;
-  bottom: 30px;
-  right: 30px;
-  overflow: hidden;
+    color: white;
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    overflow: hidden;
 }
 
 .text-point {
-  float: left;
-  min-width: 150px;
-  text-align: center;
-  margin: 2em 0;
-  margin-right: -30px;
-  position: relative;
-  font-weight: lighter;
+    float: left;
+    min-width: 150px;
+    text-align: center;
+    margin: 2em 0;
+    margin-right: -30px;
+    position: relative;
+    font-weight: lighter;
 }
 
 .box-point {
-  float: left;
-  min-width: 150px;
-  text-align: center;
-  margin: 2em 0;
-  position: relative;
-  padding: 0.5em 1.5em;
-  border-top: solid 1px white;
-  border-bottom: solid 1px white;
+    float: left;
+    min-width: 150px;
+    text-align: center;
+    margin: 2em 0;
+    position: relative;
+    padding: 0.5em 1.5em;
+    border-top: solid 1px white;
+    border-bottom: solid 1px white;
 }
 
 .box-point:before, .box-point:after {
-  content: '';
-  position: absolute;
-  top: -10px;
-  width: 2px;
-  height: -webkit-calc(100% + 20px);
-  height: calc(100% + 20px);
-  background-color: white;
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 2px;
+    height: -webkit-calc(100% + 20px);
+    height: calc(100% + 20px);
+    background-color: white;
 }
 
 .box-point:before {
-  left: 10px;
+    left: 10px;
 }
 
 .box-point:after {
-  right: 10px;
+    right: 10px;
 }
 
 .box-point p {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .ranking {
-  width: 90%;
-  margin: 40px auto;
-  text-align: center;
-  position: absolute;
-  bottom: 0px;
-  left: 30px;
-  overflow: hidden;
+    width: 90%;
+    margin: 40px auto;
+    text-align: center;
+    position: absolute;
+    bottom: 0px;
+    left: 30px;
+    overflow: hidden;
 }
 
 button {
-  margin: 20px;
+    margin: 20px;
 }
 
 .custom-btn {
-  padding: 10px 25px;
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  background: transparent;
-  outline: none !important;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  display: inline-block;
-  float: left;
+    padding: 10px 25px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    background: transparent;
+    outline: none !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    float: left;
 }
 
 /**** button-ranking ****/
 
 .button-ranking {
-  border: 2px solid #fff;
-  color: #fff;
-  z-index: 1;
+    border: 2px solid #fff;
+    color: #fff;
+    z-index: 1;
 }
 
 .button-ranking:after {
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  background: #fff;
-  transition: all 0.3s ease;
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    background: #fff;
+    transition: all 0.3s ease;
 }
 
 .button-ranking:hover {
-  color: #000;
+    color: #000;
 }
 
 .button-ranking:hover:after {
-  top: 0;
-  height: 100%;
+    top: 0;
+    height: 100%;
 }
 
 .button-ranking:active {
-  top: 2px;
+    top: 2px;
 }

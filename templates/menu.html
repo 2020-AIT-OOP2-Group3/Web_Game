@@ -23,8 +23,13 @@
         </nav>
     </header>
     <div class="main-visual">
-        <a href="/janken/start/" class="button-brain">脳トレゲーム(仮)</a>
-        <a href="/babanuki" class="button-babanuki">ババ抜き(仮)</a>
+        <form action="/janken/start/" method="GET">
+            <button class="button-brain">脳トレゲーム(仮)</button>
+        </form>
+        <form action="/babanuki" method="GET">
+            <button class="button-babanuki">ババ抜き(仮)</button>
+        </form>
+
         <div class="ranking">
             <button class="custom-btn button-ranking" onclick="location.href='/ranking/'">ランキング</button>
         </div>
