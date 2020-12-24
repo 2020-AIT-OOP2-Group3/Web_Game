@@ -48,7 +48,9 @@ def add_account():
         json.dump(json_data, f, ensure_ascii=False, indent=4, sort_keys=True, separators=(',', ': '))
 
 
-    return render_template('menu.html')
+    return render_template('menu.html', # ゲーム画面のHTML
+                            point=item["point"],
+                            name=item["name"])
 
 #ーーーーーーーーーーーーーーーーーーーーーーーーメールアドレスとパスワードの取得ーーーーーーーーーーーーーーーーーーーーーー#
 
@@ -134,6 +136,7 @@ def dated_url_for(endpoint, **values):
 def create_account():
     return render_template('create_account.html')
 
+#ーーーーーーーーーーーーーーーーーーーーーーーーじゃんけん脳トレーーーーーーーーーーーーーーーーーーーーーー#
 # じゃんけん脳トレ -スタートページ-
 @app.route('/janken/start/', methods=["GET"])
 def janken_start():
@@ -158,6 +161,7 @@ def janken_result():
     NG_times = int(NG_times)
 
     #現在のポイント数を取得
+    
     point = session["point"]
     point=int(point)
 
@@ -202,7 +206,6 @@ def janken_result():
         json.dump(json_data, f, ensure_ascii=False, indent=4, sort_keys=True, separators=(',', ': '))
 
     return render_template('janken_notore/janken_result.html',OK_times=OK_times,NG_times=NG_times,point=point,get_point=get_point)
-
 
 if __name__ == '__main__':
     app.run(host="localhost", port=8080, debug=True)
