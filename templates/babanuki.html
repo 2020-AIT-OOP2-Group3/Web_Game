@@ -2,7 +2,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="../babanuki.js"></script>
+<script defer src="{{ url_for('static', filename='babanuki.js') }}"></script>
 <title>ババ抜き</title>
 </head>
 <body>
@@ -12,68 +12,68 @@
 <br><br>
 <div id="player" style="position: absolute; left: 10px; top: 150px">プレイヤー</div>
 <div id="rank0" style="position: absolute; left: 10px; top: 180px; color: #f00;"></div>
-<img src="../CardImage/trump.png" id="card00" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card01" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card02" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card03" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card04" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card05" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card06" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card07" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card08" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card09" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card010" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card011" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card012" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card013" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card00" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card01" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card02" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card03" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card04" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card05" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card06" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card07" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card08" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card09" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card010" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card011" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card012" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card013" style="position: absolute;visibility:hidden;">
 <div id="com1" style="position: absolute; left: 10px; top: 250px">コンピューター1</div>
 <div id="rank1" style="position: absolute; left: 10px; top: 280px; color: #f00;"><b></b></div>
-<img src="../CardImage/trump.png" id="card10" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card11" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card12" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card13" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card14" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card15" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card16" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card17" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card18" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card19" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card110" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card111" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card112" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card113" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card10" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card11" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card12" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card13" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card14" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card15" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card16" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card17" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card18" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card19" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card110" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card111" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card112" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card113" style="position: absolute;visibility:hidden;">
 <div id="com2" style="position: absolute; left: 10px; top: 350px">コンピューター2</div>
 <div id="rank2" style="position: absolute; left: 10px; top: 380px; color: #f00;"></div>
-<img src="../CardImage/trump.png" id="card20" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card21" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card22" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card23" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card24" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card25" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card26" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card27" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card28" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card29" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card210" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card211" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card212" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card213" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card20" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card21" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card22" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card23" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card24" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card25" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card26" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card27" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card28" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card29" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card210" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card211" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card212" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card213" style="position: absolute;visibility:hidden;">
 <div id="com3" style="position: absolute; left: 10px; top: 450px">コンピューター3</div>
 <div id="rank3" style="position: absolute; left: 10px; top: 480px; color: #f00;"></div>
-<img src="../CardImage/trump.png" id="card30" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card31" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card32" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card33" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card34" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card35" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card36" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card37" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card38" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card39" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card310" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card311" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card312" style="position: absolute;visibility:hidden;">
-<img src="../CardImage/trump.png" id="card313" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card30" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card31" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card32" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card33" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card34" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card35" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card36" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card37" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card38" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card39" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card310" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card311" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card312" style="position: absolute;visibility:hidden;">
+<img src="{{ url_for('static', filename='trump.png') }}" id="card313" style="position: absolute;visibility:hidden;">
 
 </body>
 </html>
