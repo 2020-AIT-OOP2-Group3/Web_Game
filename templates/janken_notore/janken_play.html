@@ -6,30 +6,32 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='janken_notore/janken.css') }}">
 </head>
 <body onload="make_question()">
-  <a href="/menu/" class="button-return" method="POST">中断</a>
-  <!-- 残り時間の表示 -->
-  <h1 id="remaining_time"></h1>
-  <!-- 何回目? -->
-  <h1 id="kaisu"></h1>
-  <!-- 「どっちが勝ち?」、「どっちが負け？」の表示 -->
-  <h1 id="question_text"></h1>
-  <!-- じゃんけんの手(左側) -->
-  <button id="hand1"></button>
-  <!-- じゃんけんの手(右側) -->
-  <button id="hand2"></button>
-  <script defer src="{{ url_for('static', filename='janken_notore/janken_play.js') }}"></script>
-  <!-- 正解数と不正解数を送信(非表示) -->
-  <form action="/janken/result/" method="post" name="result">
-    <input class="hide" type="number" id="OK_times" name="OK_times">
-    <input class="hide" type="number" id="NG_times" name="NG_times">
-    <input class="hide" type="submit">
-  </form>
-  <!-- 音声素材(非表) -->
-  <audio id="OK_sound">
-    <source class="hide" src="../../static/janken_notore/OK.mp3" type="audio/mp3">
-  </audio>
-  <audio id="NG_sound">
-    <source class="hide" src="../../static/janken_notore/NG.mp3" type="audio/mp3">
-  </audio>
+  <div class="main-visual">
+    <a href="/menu/" class="button-return" method="POST">中断</a>
+    <!-- 残り時間の表示 -->
+    <h1 id="remaining_time"></h1>
+    <!-- 何回目? -->
+    <h1 id="kaisu"></h1>
+    <!-- 「どっちが勝ち?」、「どっちが負け？」の表示 -->
+    <h1 id="question_text"></h1>
+    <!-- じゃんけんの手(左側) -->
+    <button id="hand1"></button>
+    <!-- じゃんけんの手(右側) -->
+    <button id="hand2"></button>
+    <script defer src="{{ url_for('static', filename='janken_notore/janken_play.js') }}"></script>
+    <!-- 正解数と不正解数を送信(非表示) -->
+    <form action="/janken/result/" method="post" name="result">
+      <input class="hide" type="number" id="OK_times" name="OK_times">
+      <input class="hide" type="number" id="NG_times" name="NG_times">
+      <input class="hide" type="submit">
+    </form>
+    <!-- 音声素材(非表) -->
+    <audio id="OK_sound">
+      <source class="hide" src="../../static/janken_notore/OK.mp3" type="audio/mp3">
+    </audio>
+    <audio id="NG_sound">
+      <source class="hide" src="../../static/janken_notore/NG.mp3" type="audio/mp3">
+    </audio>
+  </div>
 </body>
 </html>
