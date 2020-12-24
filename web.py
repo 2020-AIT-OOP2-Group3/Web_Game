@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, url_for, jsonify,session
+from flask import Flask, request, render_template, url_for, jsonify, session, Markup
 import os
 import json
 
@@ -7,9 +7,54 @@ app.secret_key = 'd!kaHIQo8RE1Eb4a2ari'
 
 global jsonnum  # jsonファイル上でのアカウントの位置情報保存用のグローバル変数
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
+
+#ーーーーーーーーーーーーーーーーーーーーーーーー登録確認ーーーーーーーーーーーーーーーーーーーーーー#
+
+
+@app.route('/confirm_account', methods=["POST"])
+def confirm_account():
+
+    # 新規ユーザ情報の取得
+    y_name = request.form.get('nickname', None)
+    y_email = request.form.get('email', None)
+    y_pass = request.form.get('password', None)
+
+    # player.jsonを開き、json_dataに格納
+    with open('player.json') as f:
+        json_data = json.load(f)
+
+    # 新規ユーザの情報をそれぞれ変数に格納
+    item = {}
+    item["id"] = y_email
+    item["pas"] = y_pass
+    item["point"] = 0
+    item["name"] = y_name
+
+    # idが重複したかの確認
+    for i in json_data:
+        if i["id"] == y_email:  # 一致するIDがあった場合
+            err = "すでに登録されたIDです"
+            return render_template('create_account.html',
+                                   err=err
+                                   )
+
+    # 一致するIDが無かった場合
+    # 確認画面へ移動
+
+    id_input = '<input type="hidden" name="nickname" value="' + \
+        item["id"] + '"></input>'
+    pas_input = '<input type="hidden" name="email" value="' + \
+        item["pas"] + '"></input>'
+    name_input = '<input type="hidden" name="password" value="' + \
+        item["name"] + '"></input>'
+
+    return render_template('confirm_account.html',
+                           id=item["id"], pas=item["pas"], name=item["name"],
+                           id_input=Markup(id_input), pas_input=Markup(pas_input), name_input=Markup(name_input))
 
 #ーーーーーーーーーーーーーーーーーーーーーーーー新規登録ーーーーーーーーーーーーーーーーーーーーーー#
 
@@ -35,18 +80,18 @@ def add_account():
 
     # idが重複したかの確認
     for i in json_data:
-        if  i["id"] == y_email:  #一致するIDがあった場合
-            err = "すでに登録されたIDです"  
+        if i["id"] == y_email:  # 一致するIDがあった場合
+            err = "すでに登録されたIDです"
             return render_template('create_account.html',
-                                    err = err
-                                    )
+                                   err=err
+                                   )
 
-    #一致するIDが無かった場合
-    #player.jsonに書き込み
+    # 一致するIDが無かった場合
+    # player.jsonに書き込み
     with open('player.json', 'w') as f:
         json_data.append(item)
-        json.dump(json_data, f, ensure_ascii=False, indent=4, sort_keys=True, separators=(',', ': '))
-
+        json.dump(json_data, f, ensure_ascii=False, indent=4,
+                  sort_keys=True, separators=(',', ': '))
 
     return render_template('menu.html')
 
@@ -75,8 +120,8 @@ def login():
             print("id O")
             if i["pas"] == l_pas:  # メールアドレスとパスワードが一致していたらログインしてゲーム画面へ
 
-                #ログイン時にユーザーのID、名前、パスワード、ポイント数をクライアント側(ブラウザ上)に保存
-                
+                # ログイン時にユーザーのID、名前、パスワード、ポイント数をクライアント側(ブラウザ上)に保存
+
                 session["id"] = i["id"]
                 session["pas"] = i["pas"]
                 session["name"] = i["name"]
@@ -107,8 +152,9 @@ def menu_POST():
 @app.route('/menu/', methods=['GET'])
 def menu_GET():
     return render_template('menu.html',  # ゲーム画面のHTML
-                                       point=session["point"],
-                                       name=session["name"])
+                           point=session["point"],
+                           name=session["name"])
+
 
 @app.route('/babanuki')
 def babanuki():
@@ -135,54 +181,60 @@ def create_account():
     return render_template('create_account.html')
 
 # じゃんけん脳トレ -スタートページ-
+
+
 @app.route('/janken/start/', methods=["GET"])
 def janken_start():
     return render_template('janken_notore/janken_start.html')
 
 # じゃんけん脳トレ -プレイページ-
+
+
 @app.route('/janken/play/')
 def janken_play():
     return render_template('janken_notore/janken_play.html')
 
 # じゃんけん脳トレ -結果ページ-
+
+
 @app.route('/janken/result/', methods=["POST"])
 def janken_result():
 
     global jsonnum  # グローバル変数の読み込み
 
-    #合ってた回数を取得
+    # 合ってた回数を取得
     OK_times = request.form.get('OK_times')
     OK_times = int(OK_times)
-    #間違ってた回数を取得
+    # 間違ってた回数を取得
     NG_times = request.form.get("NG_times")
     NG_times = int(NG_times)
 
-    #現在のポイント数を取得
+    # 現在のポイント数を取得
     point = session["point"]
-    point=int(point)
+    point = int(point)
 
     get_point = 0  # 変数の宣言
 
-    #-獲得ポイント算出-
-    #間違ってた回数が10回以上　or (正解した回数 - 間違ってた回数)が0回以下
+    # -獲得ポイント算出-
+    # 間違ってた回数が10回以上　or (正解した回数 - 間違ってた回数)が0回以下
     if NG_times >= 10 or (OK_times - NG_times) <= 0:
         get_point = 0
-    #(正解した回数 - 間違ってた回数)が20回を下回る
+    # (正解した回数 - 間違ってた回数)が20回を下回る
     elif (OK_times - NG_times) < 20:
         get_point = (OK_times - NG_times) * 0.3
-    #(正解した回数 - 間違ってた回数)が20回以上
+    # (正解した回数 - 間違ってた回数)が20回以上
     elif (OK_times - NG_times) >= 20:
-        get_point = 6 + 1*(OK_times - NG_times -20)
-    #獲得ポイントを四捨五入
+        get_point = 6 + 1*(OK_times - NG_times - 20)
+    # 獲得ポイントを四捨五入
     print(get_point)
     get_point = int(round(get_point))
     print(get_point)
-    #反映後の現在のポイント数
+    # 反映後の現在のポイント数
     point = point + get_point
 
     session["point"] = point
 
-    #ここで、JSONデータに現在のポイントを保存する処理(JSON担当の方お願いします)
+    # ここで、JSONデータに現在のポイントを保存する処理(JSON担当の方お願いします)
     with open('player.json') as f:  # jsonファイルの読み込み
         json_data = json.load(f)
 
@@ -199,9 +251,10 @@ def janken_result():
     print(f"after : {json_data[jsonnum]}")
 
     with open('player.json', 'w') as f:  # jsonファイルに書き込んで上書き保存
-        json.dump(json_data, f, ensure_ascii=False, indent=4, sort_keys=True, separators=(',', ': '))
+        json.dump(json_data, f, ensure_ascii=False, indent=4,
+                  sort_keys=True, separators=(',', ': '))
 
-    return render_template('janken_notore/janken_result.html',OK_times=OK_times,NG_times=NG_times,point=point,get_point=get_point)
+    return render_template('janken_notore/janken_result.html', OK_times=OK_times, NG_times=NG_times, point=point, get_point=get_point)
 
 
 if __name__ == '__main__':
