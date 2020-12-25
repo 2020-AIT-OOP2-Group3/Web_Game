@@ -342,5 +342,53 @@ def janken_result():
 
     return render_template('janken_notore/janken_result.html', OK_times=OK_times, NG_times=NG_times, point=point, get_point=get_point)
 
+#ーーーーーーーーーーーーーーーーーーーーーーーーパズル脳トレーーーーーーーーーーーーーーーーーーーーーー#
+# パズル脳トレ -スタートページ-
+@app.route('/puzzle/start/', methods=["GET"])
+def puzzle_start():
+    return render_template('puzzle_notore/puzzle_start.html')
+
+# パズル脳トレ -プレイページ-
+@app.route('/puzzle/play3_3/')
+def puzzle_play():
+    return render_template('puzzle_notore/puzzle_play3_3.html')
+
+# じゃんけん脳トレ -結果ページ-
+@app.route('/puzzle/result/', methods=["POST"])
+def puzzle_result():
+    #完成か未完成かを取得
+    completeORincomplete = request.form.get('completeORincomplete')
+
+    #プレイしたゲームのレベルを取得
+    level = request.form.get('level')
+
+    #現在のポイント数を取得
+    point = session["point"]
+    point=int(point)
+
+    get_point = 0  # 変数の宣言
+    #-獲得ポイント算出-
+    if completeORincomplete == "complete":
+        message = "完成"
+        if level == "elementary":
+            get_point = 2
+        elif level == "intermediate":
+            get_point = 5
+        elif level == "advanced":
+            get_point = 20
+    else:
+        message = "未完成"
+        get_point = 0
+    #獲得ポイントを四捨五入
+    print(get_point)
+    get_point = int(round(get_point))
+    print(get_point)
+    #反映後の現在のポイント数
+    point = point + get_point
+
+    session["point"] = point
+
+    return render_template('puzzle_notore/puzzle_result.html',get_point=get_point,userName=session["name"],point=point,message=message)
+
 if __name__ == '__main__':
     app.run(host="localhost", port=8080, debug=True)
