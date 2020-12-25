@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="{{ url_for('static', filename='notore.css') }}">
+  <title>パズル脳トレ</title>
+</head>
+
+<body onload="make_question()">
+  <!-- 残り時間と完成版の画像 -->
+  <h1><span id="remaining_time"></span>　　完成図：<img id="complete_image" class="complete_image"></h1>
+  <!-- 画像の一時置き場(横長の長方形のエリア) -->
+  <div id="question_piece" class="dropFreespace" ondragover="dragover(event)" ondrop="freedrop(event)" draggable=false
+  dragenter="dragenter(event)" dragover="dragover(event)"></div>
+  <!-- マス -->
+  <div class="DROP">
+    <!-- 1行1列目のマス (行は上から1行2行...　列は左から1列,2列...) -->
+    <div id="drop1" class="dp" ondragover="dragover(event)" ondrop="drop(event)" draggable=false
+      dragenter="dragenter(event)" dragover="dragover(event)"></div>
+    <!-- 1行2列目のマス (行は上から1行2行...　列は左から1列,2列...) -->
+    <div id="drop2" class="dp" ondragover="dragover(event)" ondrop="drop(event)" draggable=false
+      dragenter="dragenter(event)" dragover="dragover(event)"></div>
+    <!-- 1行3列目のマス (行は上から1行2行...　列は左から1列,2列...) -->
+    <div id="drop3" class="dp" ondragover="dragover(event)" ondrop="drop(event)" draggable=false
+      dragenter="dragenter(event)" dragover="dragover(event)"></div>
+    <!-- 2行1列目のマス (行は上から1行2行...　列は左から1列,2列...) -->   
+    <div id="drop4" class="dp clear_box" ondragover="dragover(event)" ondrop="drop(event)" draggable=false
+      dragenter="dragenter(event)" dragover="dragover(event)"></div>
+    <!-- 2行2列目のマス (行は上から1行2行...　列は左から1列,2列...) --> 
+    <div id="drop5" class="dp" ondragover="dragover(event)" ondrop="drop(event)" draggable=false
+      dragenter="dragenter(event)" dragover="dragover(event)"></div>
+    <!-- 2行3列目のマス (行は上から1行2行...　列は左から1列,2列...) --> 
+    <div id="drop6" class="dp" ondragover="dragover(event)" ondrop="drop(event)" draggable=false
+      dragenter="dragenter(event)" dragover="dragover(event)"></div>
+    <!-- 3行1列目のマス (行は上から1行2行...　列は左から1列,2列...) --> 
+    <div id="drop7" class="dp clear_box" ondragover="dragover(event)" ondrop="drop(event)" draggable=false
+      dragenter="dragenter(event)" dragover="dragover(event)"></div>
+    <!-- 3行2列目のマス (行は上から1行2行...　列は左から1列,2列...) --> 
+    <div id="drop8" class="dp" ondragover="dragover(event)" ondrop="drop(event)" draggable=false
+      dragenter="dragenter(event)" dragover="dragover(event)"></div>
+    <!-- 3行3列目のマス (行は上から1行2行...　列は左から1列,2列...) --> 
+    <div id="drop9" class="dp" ondragover="dragover(event)" ondrop="drop(event)" draggable=false
+      dragenter="dragenter(event)" dragover="dragover(event)"></div>
+  </div>
+  <script defer src="{{ url_for('static', filename='puzzle_notore/puzzle_play.js') }}"></script>
+  <!-- 「complete」または「incomplete」の送信とゲームのレベルの送信 -->
+  <form action="/puzzle/result/" method="post" name="result">
+    <input class="hide" type="text" id="completeORincomplete" name="completeORincomplete">
+    <input class="hide" type="text" id="level" name="level" value="elementary">
+    <input class="hide" type="submit">
+  </form>
+</body>
+
+</html>
