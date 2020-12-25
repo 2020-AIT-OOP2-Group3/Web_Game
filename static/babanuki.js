@@ -3,8 +3,7 @@ $(document).ready(function(){
   var handcard;
   var fin;
   var turnPlayer;
-
-
+  var rank0 = document.querySelector("#rank0");
   /* 開始ボタン押し */
   $("#start").on("click", function(){
 
@@ -296,15 +295,16 @@ $(document).ready(function(){
 
       /* プレイヤーの勝利 */
       if( idx == 0 ){
-        alert(rank + "位です！");
         displayRank( idx, rank );
+        rank0.value = rank;
+        document.result.submit();
         return 1;
       }else{
         if( rank == 3 ){
           /* コンピューター全員終了、プレイヤー負け */
-          alert("4位です！");
           displayRank( idx, rank );
-          displayRank( 0, 4 );
+          rank0.value = 4;
+          document.result.submit();
           return 1;
         }else{
           /* コンピューターまだ残っている */
