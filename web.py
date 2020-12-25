@@ -193,6 +193,53 @@ def menu_GET():
 def babanuki():
     return render_template('babanuki.html')
 
+@app.route('/babanuki/result/', methods=["POST"])
+def babanuki_result():
+    global jsonnum  # グローバル変数の読み込み
+
+    rank0 = request.form.get('rank0')
+    rank0 = int(rank0)
+    print(rank0)
+    print(type(rank0))
+    #現在のポイント数を取得
+    point = session["point"]
+    point=int(point)
+
+    get_point = 0  # 変数の宣言
+
+    if rank0==1:
+        get_point = 20
+    elif rank0==2:
+        get_point = 10
+    elif rank0==3:
+        get_point = 5
+    
+    print(get_point)
+    #反映後の現在のポイント数
+    point = point + get_point
+
+    session["point"] = point
+
+    with open('player.json') as f:  # jsonファイルの読み込み
+        json_data = json.load(f)
+
+    print(f"before : {json_data[jsonnum]}")
+
+    i = {}
+    i["id"] = session["id"]
+    i["pas"] = session["pas"]
+    i["name"] = session["name"]
+    i["point"] = session["point"]
+
+    json_data[jsonnum] = i  # jsonファイルのアカウント情報を書き換え
+
+    print(f"after : {json_data[jsonnum]}")
+
+    with open('player.json', 'w') as f:  # jsonファイルに書き込んで上書き保存
+        json.dump(json_data, f, ensure_ascii=False, indent=4, sort_keys=True, separators=(',', ': '))
+
+    return render_template('babanuki_result.html',rank0=rank0,point=point,get_point=get_point)
+
 
 @app.context_processor
 def override_url_for():
