@@ -152,30 +152,44 @@ def login():
 
 @app.route('/ranking/')
 def ranking():
-    global jsonnum
-
     with open('player.json') as f:  # jsonファイルの読み込み
         json_data = json.load(f)
 
-    rank = 1
-    num = 0
-
-    for i in json_data:
-        if(jsonnum != num):
-            if(session["point"] < i["point"]):  # 得点が低い場合、順位が下がる
-                rank += 1
-                print(f"player{jsonnum+1} < player{num+1} rank : {rank}")
-            else:                               # 得点が同じか大きい場合、順位は変わらない
-                print(f"player{jsonnum+1} >= player{num+1} rank : {rank}")
-        num += 1
-
-    print(f"finaly rank : {rank}")
-
     rank_data = sorted(json_data, key=lambda x:x["point"], reverse=True)  # ポイントが高い順に並べ替えたリストを作る
 
+    num = 0
+    for i in rank_data:
+        if(session["name"] == i["name"]):
+            break
+        num += 1
+
+    rank = num
+
+    count = 0
+    for i in rank_data:
+        del rank_data[count]["id"], rank_data[count]["pas"]
+        rank_data[count]["rank"] = count+1
+        count += 1
+
+    print("rank sorted")
+
+    with open('ranking.json', 'w') as f:  # jsonファイルに書き込んで上書き保存
+        json.dump(rank_data, f, ensure_ascii=False, indent=3,
+                  sort_keys=True, separators=(',', ': '))
+
+
     return render_template('ranking.html',
-                            rank=rank,
-                            rank_data=rank_data)
+                            name=session["name"],
+                            point=session["point"],
+                            rank=rank)
+
+
+@app.route('/ranking/get/')
+def ranking_get():
+    with open('ranking.json') as f:  # jsonファイルの読み込み
+        rank_data = json.load(f)
+
+    return jsonify(rank_data)
     
 
 @app.route('/menu/', methods=['POST'])
