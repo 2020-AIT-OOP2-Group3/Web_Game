@@ -323,9 +323,7 @@ def janken_result():
     # ここで、JSONデータに現在のポイントを保存する処理(JSON担当の方お願いします)
     with open('player.json') as f:  # jsonファイルの読み込み
         json_data = json.load(f)
-
-    print(f"before : {json_data[jsonnum]}")
-
+        
     i = {}
     i["id"] = session["id"]
     i["pas"] = session["pas"]
@@ -333,8 +331,6 @@ def janken_result():
     i["point"] = session["point"]
 
     json_data[jsonnum] = i  # jsonファイルのアカウント情報を書き換え
-
-    print(f"after : {json_data[jsonnum]}")
 
     with open('player.json', 'w') as f:  # jsonファイルに書き込んで上書き保存
         json.dump(json_data, f, ensure_ascii=False, indent=4,
@@ -356,6 +352,9 @@ def puzzle_play():
 # じゃんけん脳トレ -結果ページ-
 @app.route('/puzzle/result/', methods=["POST"])
 def puzzle_result():
+
+    global jsonnum  # グローバル変数の読み込み
+
     #完成か未完成かを取得
     completeORincomplete = request.form.get('completeORincomplete')
 
@@ -397,6 +396,22 @@ def puzzle_result():
     point = point + get_point
 
     session["point"] = point
+
+    #  ポイント獲得の処理
+    with open('player.json') as f:  # jsonファイルの読み込み
+        json_data = json.load(f)
+
+    i = {}
+    i["id"] = session["id"]
+    i["pas"] = session["pas"]
+    i["name"] = session["name"]
+    i["point"] = session["point"]
+
+    json_data[jsonnum] = i  # jsonファイルのアカウント情報を書き換え
+
+    with open('player.json', 'w') as f:  # jsonファイルに書き込んで上書き保存
+        json.dump(json_data, f, ensure_ascii=False, indent=4,
+                  sort_keys=True, separators=(',', ': '))
 
     return render_template('puzzle_notore/puzzle_result.html',get_point=get_point,userName=session["name"],point=point,message=message,level_name=level_name)
 
