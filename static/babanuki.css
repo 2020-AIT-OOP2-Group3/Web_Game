@@ -2,3 +2,20 @@
     position:absolute;
     visibility:hidden;
 }
+body{
+    background-image: url('green.jpg');
+    background-size: cover;
+}
+.log{
+    position: absolute; 
+    right:0px;
+    bottom: 0px;
+    margin: 1em auto;
+    padding: 1em;
+    width: 28%;
+    height: 35%;
+    border: 5px double gray;
+    background-color:silver;
+    color:black;
+    border-radius: 1px;
+}
