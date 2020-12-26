@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="{{ url_for('static', filename='notore.css') }}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
@@ -14,6 +15,8 @@
   <span>{{get_point}}</span>
   <span>現在のポイント数</span>
   <span>{{point}}</span>
+  <span>ゲームのレベル</span>
+  <span>{{level_name}}</span>
   <a href="/menu/" class="button-return" method="POST">戻る</a>
 </body>
 </html>

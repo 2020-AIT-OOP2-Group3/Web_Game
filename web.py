@@ -367,16 +367,26 @@ def puzzle_result():
     point=int(point)
 
     get_point = 0  # 変数の宣言
+    level_name = "" #レベル名の宣言
     #-獲得ポイント算出-
     if completeORincomplete == "complete":
         message = "完成"
         if level == "elementary":
+            level_name = "初級"
             get_point = 2
         elif level == "intermediate":
+            level_name = "中級"
             get_point = 5
         elif level == "advanced":
+            level_name = "上級"
             get_point = 20
     else:
+        if level == "elementary":
+            level_name = "初級"
+        elif level == "intermediate":
+            level_name = "中級"
+        elif level == "advanced":
+            level_name = "上級"
         message = "未完成"
         get_point = 0
     #獲得ポイントを四捨五入
@@ -388,7 +398,7 @@ def puzzle_result():
 
     session["point"] = point
 
-    return render_template('puzzle_notore/puzzle_result.html',get_point=get_point,userName=session["name"],point=point,message=message)
+    return render_template('puzzle_notore/puzzle_result.html',get_point=get_point,userName=session["name"],point=point,message=message,level_name=level_name)
 
 if __name__ == '__main__':
     app.run(host="localhost", port=8080, debug=True)

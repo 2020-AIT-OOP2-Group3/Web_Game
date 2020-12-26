@@ -5,6 +5,10 @@ const startTime = Date.now();//ゲームスタート時刻
 var result = "";//結果「complete」or「incomplete」
 var completeORincomplete = document.querySelector("#completeORincomplete");//「complete」or「incomplete」
 var complete_image = document.querySelector("#complete_image"); //完成版の画像
+var ketteion = document.querySelector("#ketteion"); //パズルをマスにはめる時の音
+var hakushu_sho = document.querySelector("#hakushu_sho"); //小さい拍手音
+var hakushu_dai = document.querySelector("#hakushu_dai"); //大きい拍手音
+var hakushu_time = 0; //拍手音を鳴らした時間(単位はミリ秒)
 
 /*
 ゲームスタート時のパズルピースの並びを決める(ランダムで決定)
@@ -55,6 +59,9 @@ function dragstart(event) {
 マス目にドロップされた時の処理
 */
 function drop(event) {
+  //再生位置を始めに戻すことで連打に対応
+  ketteion.currentTime = 0;
+  ketteion.play();
   //ドラッグされたデータのidをDataTransferオブジェクトから取得
   var id = event.dataTransfer.getData("t");
   //idからドラッグされた要素を取得
@@ -115,9 +122,11 @@ function check() {
         continue;
       } else {
         result = "incomplete";
+        break;
       }
     } else {
       result = "incomplete";
+      break;
     }
   }
 }
@@ -125,33 +134,54 @@ function check() {
 /*
 一定の間隔ごとに処理を呼び出すメソッド
 */
-const timer = setInterval(() => {
+var timer = setInterval(() => {
 
   // 現在時刻 - ゲームスタート時点の時刻
-  const diff = Date.now() - startTime;
+  var diff = Date.now() - startTime;
 
   //30秒経過まで、あと何ミリ秒か？
-  const diffSec = 30000 - diff;
+  var diffSec = 30000 - diff;
 
   //ミリ秒を整数に変換
   remaining_time = Math.ceil(diffSec / 1000);
-  let text = "あと" + remaining_time + "秒";
+  var text = "あと" + remaining_time + "秒";
 
-  // 0秒以下になったら
-  if (diffSec <= 0) {
+  //答え合わせをして、resultに結果を代入する関数
+  check();
+
+  // 0秒以下　かつ　パズルが未完成なら
+  if (remaining_time <= 0 && result != "complete") {
     //タイマーを停止
     clearInterval(timer);
-    //答え合わせをして、resultに結果を代入する関数
-    check()
     //送信するデータの値を設定
-    completeORincomplete.value = result;
+    completeORincomplete.value = "incomplete";
     //送信
     document.result.submit();
     // タイマー終了を伝える
     text = "終了";
   }
 
-  // 残り時間を画面に表示
+  //正解している　かつ　拍手音を鳴らした時間が800ミリ秒より短いなら
+  if(result == "complete" && hakushu_time < 800){
+    //拍手音を鳴らす(初級レベルなので、小さい拍手音にしました)
+    hakushu_sho.play();
+    // タイマー終了を伝える
+    text = "終了";
+    //拍手音を鳴らした時間を更新
+    hakushu_time += 1;
+  }
+  //正解している　かつ　拍手音を鳴らした時間が800ミリ秒以上なら
+  else if(result == "complete" && hakushu_time >= 800){
+    //タイマーを停止
+    clearInterval(timer);
+    //送信するデータの値を設定
+    completeORincomplete.value = "complete";
+    //送信
+    document.result.submit();
+    // タイマー終了を伝える
+    text = "終了";
+  }
   document.querySelector('#remaining_time').innerHTML = text;
 })
+
 
