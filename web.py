@@ -278,7 +278,9 @@ def create_account():
 #  脳トレ -脳トレメニュー-
 @app.route('/notore_menu', methods=["GET"])
 def notore_menu():
-    return render_template('notore_menu.html')
+    return render_template('notore_menu.html',
+                            point=session["point"],
+                            name=session["name"])
 
 # じゃんけん脳トレ -スタートページ-
 
