@@ -1,3 +1,4 @@
+/*---------------------------------脳トレメニュー---------------------------------
 /* Fonts */
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400);
 
@@ -8,14 +9,21 @@
 }
 
 /* Simple Reset */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* body */
+
 
 body {
     background: #e9e9e9;
     color: #5e5e5e;
     font: 400 87.5%/1.5em 'Open Sans', sans-serif;
   }
-  
+
   header {
     padding: 0px 4% 10px;
     position: fixed;
@@ -25,6 +33,27 @@ body {
     display: flex;
     align-items: center;
     z-index: 1;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  nav {
+    margin: 0 0 0 auto;
+  }
+  
+  ul {
+    list-style: none;
+    margin: 0;
+    display: flex;
+  }
+  
+  li {
+    margin: 0 0 0 15px;
+    font-size: 14px;
+    color: white;
   }
   
   h1 {
@@ -39,7 +68,7 @@ body {
     align-items: center;
     height: 100vh;
     width: 100%;
-    background: url('../brain.jpg') center / cover;
+    background: url('brain.jpg') center / cover;
   }
   
   html {
@@ -68,7 +97,7 @@ body {
     padding-top: 250px;
     transition: all 1.2s cubic-bezier(0.2, 1, 0.2, 1);
     margin: 50px;
-    background: url('brain.jpg') top center / cover no-repeat;
+    background: url('puzzle.png') top center / cover no-repeat;
     z-index: 0;
   }
   
@@ -80,7 +109,7 @@ body {
     text-shadow: 2px 2px 3px #000;
   }
   
-  .button-zyanken {
+  .button-janken {
     color: #FFF;
     display: inline-block;
     font-size: 16px;
@@ -100,7 +129,7 @@ body {
     padding-top: 250px;
     transition: all 1.2s cubic-bezier(0.2, 1, 0.2, 1);
     margin: 50px;
-    background: url('joker.jpg') top center / cover no-repeat;
+    background: url('janken_boys.png') top center / cover no-repeat;
     z-index: 0;
   }
   
@@ -112,35 +141,89 @@ body {
     text-shadow: 2px 2px 3px #000;
   }
 
-
-
-   .button-start { /*スタートボタン*/
-    font-size: 1.6rem;
-    font-weight: 700;
-    line-height: 1.5;
-    display: inline-block;
-    padding: 1rem 4rem;
-    cursor: pointer;
+  /*ポイント*/
+  .point {
+    color: white;
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    overflow: hidden;
+  }
+  
+  .text-point {
+    float: left;
+    min-width: 150px;
     text-align: center;
-    vertical-align: middle;
-    text-decoration: none;
-    letter-spacing: 0.1em;
-    color: #212529;
-    border-radius: 0.5rem;
-    border: 1px solid #ccc;  
-  
-    background: -webkit-gradient(linear, left top, left bottom, from(#fdfbfb), to(#ebedee));
-    background: -webkit-linear-gradient(top, #fdfbfb 0%, #ebedee 100%);
-    background: linear-gradient(to bottom, #fdfbfb 0%, #ebedee 100%);
-    -webkit-box-shadow: inset 1px 1px 1px #fff;
-    box-shadow: inset 1px 1px 1px #fff;
+    margin: 2em 0;
+    margin-right: -30px;
+    position: relative;
+    font-weight: lighter;
   }
   
-  a.button-start:hover {
-    background: -webkit-gradient(linear, left bottom, left top, from(#fdfbfb), to(#ebedee));
-    background: -webkit-linear-gradient(bottom, #fdfbfb 0%, #ebedee 100%);
-    background: linear-gradient(to top, #fdfbfb 0%, #ebedee 100%);
+  .box-point {
+    float: left;
+    min-width: 150px;
+    text-align: center;
+    margin: 2em 0;
+    position: relative;
+    padding: 0.5em 1.5em;
+    border-top: solid 1px white;
+    border-bottom: solid 1px white;
   }
+  
+  .box-point:before, .box-point:after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 2px;
+    height: -webkit-calc(100% + 20px);
+    height: calc(100% + 20px);
+    background-color: white;
+  }
+  
+  .box-point:before {
+    left: 10px;
+  }
+  
+  .box-point:after {
+    right: 10px;
+  }
+  
+  .box-point p {
+    margin: 0;
+    padding: 0;
+  }
+
+/*---------------------------------じゃんけん脳トレ---------------------------------
+
+/*スタートボタン*/
+.button-start { 
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.5;
+  display: inline-block;
+  padding: 1rem 4rem;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  color: #212529;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;  
+
+  background: -webkit-gradient(linear, left top, left bottom, from(#fdfbfb), to(#ebedee));
+  background: -webkit-linear-gradient(top, #fdfbfb 0%, #ebedee 100%);
+  background: linear-gradient(to bottom, #fdfbfb 0%, #ebedee 100%);
+  -webkit-box-shadow: inset 1px 1px 1px #fff;
+  box-shadow: inset 1px 1px 1px #fff;
+}
+
+a.button-start:hover {
+  background: -webkit-gradient(linear, left bottom, left top, from(#fdfbfb), to(#ebedee));
+  background: -webkit-linear-gradient(bottom, #fdfbfb 0%, #ebedee 100%);
+  background: linear-gradient(to top, #fdfbfb 0%, #ebedee 100%);
+}
 
 /*---------------------------------パズル脳トレ---------------------------------
 /* パズルのマス全体 */
