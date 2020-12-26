@@ -43,13 +43,22 @@
     <div id="drop9" class="dp" ondragover="dragover(event)" ondrop="drop(event)" draggable=false
       dragenter="dragenter(event)" dragover="dragover(event)"></div>
   </div>
-  <script defer src="{{ url_for('static', filename='puzzle_notore/puzzle_play.js') }}"></script>
+  <script defer src="{{ url_for('static', filename='puzzle_notore/puzzle_play3_3.js') }}"></script>
   <!-- 「complete」または「incomplete」の送信とゲームのレベルの送信 -->
   <form action="/puzzle/result/" method="post" name="result">
     <input class="hide" type="text" id="completeORincomplete" name="completeORincomplete">
     <input class="hide" type="text" id="level" name="level" value="elementary">
     <input class="hide" type="submit">
   </form>
+  <audio id="ketteion">
+    <source class="hide" src="../../static/puzzle_notore/ketteion.mp3" type="audio/mp3">
+  </audio>
+  <audio id="hakushu_sho">
+    <source class="hide" src="../../static/puzzle_notore/hakushu_sho.mp3" type="audio/mp3">
+  </audio>
+  <audio id="hakushu_dai">
+    <source class="hide" src="../../static/puzzle_notore/hakushu_dai.mp3" type="audio/mp3">
+  </audio>
 </body>
 
 </html>

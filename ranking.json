@@ -1,0 +1,27 @@
+[
+   {
+      "name": "piyo",
+      "point": 500,
+      "rank": 1
+   },
+   {
+      "name": "あいうえお",
+      "point": 400,
+      "rank": 2
+   },
+   {
+      "name": "haha",
+      "point": 300,
+      "rank": 3
+   },
+   {
+      "name": "aaa",
+      "point": 200,
+      "rank": 4
+   },
+   {
+      "name": "bbb",
+      "point": 100,
+      "rank": 5
+   }
+]

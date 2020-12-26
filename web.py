@@ -152,30 +152,44 @@ def login():
 
 @app.route('/ranking/')
 def ranking():
-    global jsonnum
-
     with open('player.json') as f:  # jsonファイルの読み込み
         json_data = json.load(f)
 
-    rank = 1
-    num = 0
-
-    for i in json_data:
-        if(jsonnum != num):
-            if(session["point"] < i["point"]):  # 得点が低い場合、順位が下がる
-                rank += 1
-                print(f"player{jsonnum+1} < player{num+1} rank : {rank}")
-            else:                               # 得点が同じか大きい場合、順位は変わらない
-                print(f"player{jsonnum+1} >= player{num+1} rank : {rank}")
-        num += 1
-
-    print(f"finaly rank : {rank}")
-
     rank_data = sorted(json_data, key=lambda x:x["point"], reverse=True)  # ポイントが高い順に並べ替えたリストを作る
 
+    num = 0
+    for i in rank_data:
+        if(session["name"] == i["name"]):
+            break
+        num += 1
+
+    rank = num
+
+    count = 0
+    for i in rank_data:
+        del rank_data[count]["id"], rank_data[count]["pas"]
+        rank_data[count]["rank"] = count+1
+        count += 1
+
+    print("rank sorted")
+
+    with open('ranking.json', 'w') as f:  # jsonファイルに書き込んで上書き保存
+        json.dump(rank_data, f, ensure_ascii=False, indent=3,
+                  sort_keys=True, separators=(',', ': '))
+
+
     return render_template('ranking.html',
-                            rank=rank,
-                            rank_data=rank_data)
+                            name=session["name"],
+                            point=session["point"],
+                            rank=rank)
+
+
+@app.route('/ranking/get/')
+def ranking_get():
+    with open('ranking.json') as f:  # jsonファイルの読み込み
+        rank_data = json.load(f)
+
+    return jsonify(rank_data)
     
 
 @app.route('/menu/', methods=['POST'])
@@ -325,9 +339,7 @@ def janken_result():
     # ここで、JSONデータに現在のポイントを保存する処理(JSON担当の方お願いします)
     with open('player.json') as f:  # jsonファイルの読み込み
         json_data = json.load(f)
-
-    print(f"before : {json_data[jsonnum]}")
-
+        
     i = {}
     i["id"] = session["id"]
     i["pas"] = session["pas"]
@@ -335,8 +347,6 @@ def janken_result():
     i["point"] = session["point"]
 
     json_data[jsonnum] = i  # jsonファイルのアカウント情報を書き換え
-
-    print(f"after : {json_data[jsonnum]}")
 
     with open('player.json', 'w') as f:  # jsonファイルに書き込んで上書き保存
         json.dump(json_data, f, ensure_ascii=False, indent=4,
@@ -358,6 +368,9 @@ def puzzle_play():
 # じゃんけん脳トレ -結果ページ-
 @app.route('/puzzle/result/', methods=["POST"])
 def puzzle_result():
+
+    global jsonnum  # グローバル変数の読み込み
+
     #完成か未完成かを取得
     completeORincomplete = request.form.get('completeORincomplete')
 
@@ -369,16 +382,26 @@ def puzzle_result():
     point=int(point)
 
     get_point = 0  # 変数の宣言
+    level_name = "" #レベル名の宣言
     #-獲得ポイント算出-
     if completeORincomplete == "complete":
         message = "完成"
         if level == "elementary":
+            level_name = "初級"
             get_point = 2
         elif level == "intermediate":
+            level_name = "中級"
             get_point = 5
         elif level == "advanced":
+            level_name = "上級"
             get_point = 20
     else:
+        if level == "elementary":
+            level_name = "初級"
+        elif level == "intermediate":
+            level_name = "中級"
+        elif level == "advanced":
+            level_name = "上級"
         message = "未完成"
         get_point = 0
     #獲得ポイントを四捨五入
@@ -390,7 +413,23 @@ def puzzle_result():
 
     session["point"] = point
 
-    return render_template('puzzle_notore/puzzle_result.html',get_point=get_point,userName=session["name"],point=point,message=message)
+    #  ポイント獲得の処理
+    with open('player.json') as f:  # jsonファイルの読み込み
+        json_data = json.load(f)
+
+    i = {}
+    i["id"] = session["id"]
+    i["pas"] = session["pas"]
+    i["name"] = session["name"]
+    i["point"] = session["point"]
+
+    json_data[jsonnum] = i  # jsonファイルのアカウント情報を書き換え
+
+    with open('player.json', 'w') as f:  # jsonファイルに書き込んで上書き保存
+        json.dump(json_data, f, ensure_ascii=False, indent=4,
+                  sort_keys=True, separators=(',', ': '))
+
+    return render_template('puzzle_notore/puzzle_result.html',get_point=get_point,userName=session["name"],point=point,message=message,level_name=level_name)
 
 if __name__ == '__main__':
     app.run(host="localhost", port=8080, debug=True)
