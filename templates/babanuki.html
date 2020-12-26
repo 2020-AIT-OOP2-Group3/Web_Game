@@ -3,78 +3,82 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../static/babanuki.css">
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script defer src="{{ url_for('static', filename='babanuki.js') }}"></script>
 <title>ババ抜き</title>
 </head>
 <body>
 <span>{{id}}</span>
 <div id="title" style="position: absolute; left: 10px; top: 10px"><b>ババ抜き</b></div>
-<div id="message" style="position: absolute; left: 10px; top: 50px">開始を押してください。</div>
+<textarea class="log" id="message" type="text">ババ抜きへようこそ
+1位:20pt 2位:10pt 3位:5pt 4位:0pt
+開始を押してください
+</textarea>
 <button id="start" style="position: absolute; left: 10px; top: 100px;">開始</button>
 <br><br>
 <div id="player" style="position: absolute; left: 10px; top: 150px">プレイヤー</div>
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card00">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card01">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card02">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card03">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card04">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card05">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card06">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card07">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card08">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card09">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card010">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card011">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card012">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card013">
-<div id="com1" style="position: absolute; left: 10px; top: 250px">コンピューター1</div>
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card00">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card01">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card02">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card03">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card04">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card05">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card06">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card07">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card08">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card09">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card010">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card011">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card012">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card013">
+<div id="com1" style="position:absolute; left: 50px; top: 450px">コンピューター1</div>
 <div id="rank1" style="position: absolute; left: 10px; top: 280px; color: #f00;"><b></b></div>
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card10">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card11">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card12">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card13">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card14">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card15">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card16">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card17">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card18">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card19">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card110">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card111">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card112">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card113">
-<div id="com2" style="position: absolute; left: 10px; top: 350px">コンピューター2</div>
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card10">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card11">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card12">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card13">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card14">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card15">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card16">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card17">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card18">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card19">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card110">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card111">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card112">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card113">
+<div id="com2" style="position: absolute; left: 480px; top: 200px">コンピューター2</div>
 <div id="rank2" style="position: absolute; left: 10px; top: 380px; color: #f00;"></div>
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card20">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card21">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card22">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card23">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card24">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card25">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card26">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card27">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card28">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card29">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card210">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card211">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card212">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card213">
-<div id="com3" style="position: absolute; left: 10px; top: 450px">コンピューター3</div>
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card20">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card21">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card22">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card23">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card24">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card25">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card26">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card27">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card28">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card29">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card210">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card211">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card212">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card213">
+<div id="com3" style="position: absolute; left: 1000px; top: 450px">コンピューター3</div>
 <div id="rank3" style="position: absolute; left: 10px; top: 480px; color: #f00;"></div>
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card30">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card31">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card32">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card33">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card34">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card35">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card36">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card37">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card38">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card39">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card310">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card311">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card312">
-<img class="styletest" src="{{ url_for('static', filename='trump.png') }}" id="card313">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card30">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card31">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card32">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card33">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card34">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card35">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card36">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card37">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card38">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card39">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card310">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card311">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card312">
+<img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card313">
 <a href="/menu/" class="button-return" method="POST" style ="position: absolute;left:10px; bottom:100px;">戻る</a>
 
 <form action="/babanuki/result/" method="post" name="result">
