@@ -8,7 +8,10 @@ $(document).ready(function(){
   $("#start").on("click", function(){
 
     displayMessage("手札が配られます");
-
+    $("#title").css("visibility", "hidden");
+    $("#com1").css("visibility", "visible");
+    $("#com2").css("visibility", "visible");
+    $("#com3").css("visibility", "visible");
     /* 初期化 */
     handcard = new Array();
     fin = new Array();
@@ -81,7 +84,7 @@ $(document).ready(function(){
           break;
         }
       }
-      displayMessage("あなたの番です\nコンピューター" + (i) + "からカードを取ってください。");
+      displayMessage("コンピューター" + (i) + "からカードを取ってください。\nあなたの番です");
     }else{
       displayMessage("コンピューター"+ (turnPlayer) +"の番です");
       setTimeout(function(){getCardComputer();}, 1000);
@@ -379,13 +382,15 @@ $(document).ready(function(){
   function displayMessage(str){
     var returnmessage;
     text = document.getElementById("message");
-    returnmessage = text.textContent+'\n'+str;
+    returnmessage = str+'\n'+text.textContent;
     $("#message").text(returnmessage);
   }
 
   /* 順位を表示する */
   function displayRank(y){
+    if(y!=0){
     displayMessage("コンピューター"+y+"が上がりました");
+  }
   }
 
   /* 順位を非表示にする */
@@ -396,6 +401,7 @@ $(document).ready(function(){
   /* 開始ボタン無効化 */
   function disabledStart(){
     $("#start").prop("disabled", true);
+    $("#start").css("visibility", "hidden");
   }
 
   /* 開始ボタン有効化 */

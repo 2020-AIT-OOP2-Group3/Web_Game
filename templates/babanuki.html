@@ -9,14 +9,14 @@
 </head>
 <body>
 <span>{{id}}</span>
-<div id="title" style="position: absolute; left: 10px; top: 10px"><b>ババ抜き</b></div>
+<div class="title" id="title" style="position: absolute; left: 550px; top: 80px"><b>ババ抜き</b></div>
 <textarea class="log" id="message" type="text">ババ抜きへようこそ
 1位:20pt 2位:10pt 3位:5pt 4位:0pt
 開始を押してください
 </textarea>
-<button id="start" style="position: absolute; left: 10px; top: 100px;">開始</button>
+<button class="btn-square-shadow" id="start" style="position: absolute; left: 520px; top: 200px;font-size: 1.3em;padding: 5px 170px;">開始</button>
 <br><br>
-<div id="player" style="position: absolute; left: 10px; top: 150px">プレイヤー</div>
+<div id="player" style="position: absolute; left: 10px; top: 150px"></div>
 <img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card00">
 <img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card01">
 <img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card02">
@@ -31,7 +31,7 @@
 <img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card011">
 <img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card012">
 <img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card013">
-<div id="com1" style="position:absolute; left: 50px; top: 450px">コンピューター1</div>
+<div id="com1" style="visibility:hidden; position:absolute; left: 50px; top: 450px">コンピューター1</div>
 <div id="rank1" style="position: absolute; left: 10px; top: 280px; color: #f00;"><b></b></div>
 <img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card10">
 <img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card11">
@@ -47,7 +47,7 @@
 <img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card111">
 <img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card112">
 <img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card113">
-<div id="com2" style="position: absolute; left: 480px; top: 200px">コンピューター2</div>
+<div id="com2" style="visibility:hidden; position: absolute; left: 480px; top: 200px">コンピューター2</div>
 <div id="rank2" style="position: absolute; left: 10px; top: 380px; color: #f00;"></div>
 <img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card20">
 <img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card21">
@@ -63,7 +63,7 @@
 <img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card211">
 <img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card212">
 <img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card213">
-<div id="com3" style="position: absolute; left: 1000px; top: 450px">コンピューター3</div>
+<div id="com3" style="visibility:hidden; position: absolute; left: 1000px; top: 450px">コンピューター3</div>
 <div id="rank3" style="position: absolute; left: 10px; top: 480px; color: #f00;"></div>
 <img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card30">
 <img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card31">
@@ -79,7 +79,7 @@
 <img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card311">
 <img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card312">
 <img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card313">
-<a href="/menu/" class="button-return" method="POST" style ="position: absolute;left:10px; bottom:100px;">戻る</a>
+<a href="/menu/" class="btn-square-shadow" method="POST" style="position: absolute; right: 50px; top: 50px;">戻る</a>
 
 <form action="/babanuki/result/" method="post" name="result">
     <input class="styletest" type="text" id="rank0" name="rank0">
