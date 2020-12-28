@@ -4,6 +4,9 @@ $(document).ready(function(){
   var fin;
   var turnPlayer;
   var rank0 = document.querySelector("#rank0");
+  var card_sound = document.querySelector("#card_sound");
+  card_sound.volume = 0.10;
+
   /* 開始ボタン押し */
   $("#start").on("click", function(){
 
@@ -93,6 +96,7 @@ $(document).ready(function(){
 
   /* コンピューターがカードを取る */
 　function getCardComputer(){
+  card_sound.play();
     /* 誰から取るかを決める */
     var getIdx = turnPlayer;
     for( var i=0; i<3; i++){
@@ -116,6 +120,7 @@ $(document).ready(function(){
     /* 取られた人のカードを減らす */
     handcard[getIdx][getCardIdx]=-1;
     cardSride(getIdx);
+    
 
     if( getIdx == 0 ){
       dispPlayerAllCard();
@@ -184,7 +189,7 @@ $(document).ready(function(){
         }
       }
     }
-
+    card_sound.play();
     /* プレイヤーのカードを追加 */
     handcard[0].push(handcard[y][x]);
     if(handcard[y][x]!=52){

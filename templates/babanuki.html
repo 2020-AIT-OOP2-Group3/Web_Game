@@ -80,7 +80,9 @@
 <img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card312">
 <img class="styletest" src="{{ url_for('static', filename='CardImage/back.png') }}" id="card313">
 <a href="/menu/" class="btn-square-shadow" method="POST" style="position: absolute; right: 50px; top: 50px;">戻る</a>
-
+<audio id="card_sound">
+    <source class="styletest"src="../static/card-turn-over1.mp3" type="audio/mp3">
+  </audio>
 <form action="/babanuki/result/" method="post" name="result">
     <input class="styletest" type="text" id="rank0" name="rank0">
     <input class="styletest" type="submit">
