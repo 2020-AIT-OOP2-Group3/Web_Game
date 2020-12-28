@@ -194,7 +194,39 @@ body {
     padding: 0;
   }
 
-/*---------------------------------じゃんけん脳トレ---------------------------------
+/*---------------------------------じゃんけん脳トレ---------------------------------*/
+
+main {
+  position: relative;
+  overflow: hidden;
+  padding: 7rem 5rem 5rem;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 50px 60px -10px;
+}
+
+h2 {
+  width: 200;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-size: 5rem;
+  letter-spacing: .07rem;
+  text-align: center;
+  background-color: #232323;
+  color: #fff;
+}
+
+main h3 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+main h4 {
+  text-align: center;
+  font-size: 2rem;
+}
 
 /*スタートボタン*/
 .button-start { 
@@ -210,20 +242,25 @@ body {
   letter-spacing: 0.1em;
   color: #212529;
   border-radius: 0.5rem;
-  border: 1px solid #ccc;  
-
+  border: 1px solid #ccc;
   background: -webkit-gradient(linear, left top, left bottom, from(#fdfbfb), to(#ebedee));
   background: -webkit-linear-gradient(top, #fdfbfb 0%, #ebedee 100%);
   background: linear-gradient(to bottom, #fdfbfb 0%, #ebedee 100%);
   -webkit-box-shadow: inset 1px 1px 1px #fff;
   box-shadow: inset 1px 1px 1px #fff;
+  position: relative;
+  top: 100px;
+  right: 300px;
 }
 
-a.button-start:hover {
+.button-start:hover {
   background: -webkit-gradient(linear, left bottom, left top, from(#fdfbfb), to(#ebedee));
   background: -webkit-linear-gradient(bottom, #fdfbfb 0%, #ebedee 100%);
   background: linear-gradient(to top, #fdfbfb 0%, #ebedee 100%);
 }
+
+
+
 
 /*---------------------------------パズル脳トレ---------------------------------
 /* パズルのマス全体 */
