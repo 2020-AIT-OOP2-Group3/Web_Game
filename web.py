@@ -274,7 +274,7 @@ def dated_url_for(endpoint, **values):
 def create_account():
     return render_template('create_account.html')
 
-#ーーーーーーーーーーーーーーーーーーーーーーーー脳トレーーーーーーーーーーーーーーーーーーーーーー#
+#ーーーーーーーーーーーーーーーーーーーーーーーーじゃんけん脳トレーーーーーーーーーーーーーーーーーーーーーー#
 #  脳トレ -脳トレメニュー-
 @app.route('/notore_menu', methods=["GET"])
 def notore_menu():
@@ -287,7 +287,9 @@ def notore_menu():
 
 @app.route('/janken/start/', methods=["GET"])
 def janken_start():
-    return render_template('janken_notore/janken_start.html')
+    return render_template('janken_notore/janken_start.html',
+                            point=session["point"],
+                            name=session["name"])
 
 # じゃんけん脳トレ -プレイページ-
 
