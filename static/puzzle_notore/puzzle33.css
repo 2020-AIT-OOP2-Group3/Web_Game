@@ -1,0 +1,55 @@
+/* パズルのマス全体 */
+.DROP {
+  width: 1000px;
+  height: 100px;
+}
+
+/* 改行したいマス　←　4×4の脳トレパズルでいうと一番左にあるマスのこと */
+.clear_box {
+  /*　左寄せ、または右寄せされた全ての要素に対する回り込みを解除  */
+  clear: left;
+}
+
+/* マス */
+.dp {
+  width: 100px;
+  height: 100%;
+  float: left;
+  border: 1px solid;
+}
+
+/* パズルのピース */
+.piece{
+  width: 100px;
+  height: 100px;
+}
+
+/* 画像の一時置き場(横長の長方形のエリア) */
+.dropFreespace{
+  width: 80%;
+  height: 230px;
+  margin-bottom: 30px;
+  border: 1px solid;
+}
+
+/* フォームの送信ボタンや入力欄を非表示にするためのクラス */
+.hide{
+  /* 表示を非表示にする */
+  visibility:hidden;
+}
+
+/* 完成図の要素 */
+.complete_image{
+  width: 100px;
+  height: 100px;
+  /* 親要素(今回はh1タグ)を基準として、上下中央寄せにする */
+  vertical-align: middle;
+}
+
+/* 完成図と画像の一時置き場を子要素とする親要素 */
+.Parent{
+    /* 子要素を横並びにする */
+    display: flex;
+    /*　子要素を左から並べる設定*/  
+    flex-direction: row;
+}
