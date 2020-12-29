@@ -258,3 +258,9 @@ main h4 {
   background: -webkit-linear-gradient(bottom, #fdfbfb 0%, #ebedee 100%);
   background: linear-gradient(to top, #fdfbfb 0%, #ebedee 100%);
 }
+
+/* フォームの送信ボタンや入力欄を非表示にするためのクラス */
+.hide{
+  /* 表示を非表示にする */
+  visibility:hidden;
+}
