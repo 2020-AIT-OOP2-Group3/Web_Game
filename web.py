@@ -362,10 +362,21 @@ def janken_result():
 def puzzle_start():
     return render_template('puzzle_notore/puzzle_start.html')
 
-# パズル脳トレ -プレイページ-
+# パズル脳トレ -3×3プレイページ-
 @app.route('/puzzle/play3_3/')
-def puzzle_play():
+def puzzle_play3_3():
     return render_template('puzzle_notore/puzzle_play3_3.html')
+
+# パズル脳トレ -4×4プレイページ-
+@app.route('/puzzle/play4_4/')
+def puzzle_play4_4():
+    return render_template('puzzle_notore/puzzle_play4_4.html')
+
+# パズル脳トレ -5×5プレイページ-
+@app.route('/puzzle/play5_5/')
+def puzzle_play5_5():
+    return render_template('puzzle_notore/puzzle_play5_5.html')
+
 
 # じゃんけん脳トレ -結果ページ-
 @app.route('/puzzle/result/', methods=["POST"])

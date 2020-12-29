@@ -8,6 +8,8 @@ var complete_image = document.querySelector("#complete_image"); //完成版の�
 var ketteion = document.querySelector("#ketteion"); //パズルをマスにはめる時の音
 var hakushu_sho = document.querySelector("#hakushu_sho"); //小さい拍手音
 var hakushu_dai = document.querySelector("#hakushu_dai"); //大きい拍手音
+var timeron1 = document.querySelector("#timeron1"); //タイマー音
+var timeron2 = document.querySelector("#timeron2"); //タイマー音
 var hakushu_time = 0; //拍手音を鳴らした時間(単位はミリ秒)
 
 /*
@@ -59,9 +61,6 @@ function dragstart(event) {
 マス目にドロップされた時の処理
 */
 function drop(event) {
-  //再生位置を始めに戻すことで連打に対応
-  ketteion.currentTime = 0;
-  ketteion.play();
   //ドラッグされたデータのidをDataTransferオブジェクトから取得
   var id = event.dataTransfer.getData("t");
   //idからドラッグされた要素を取得
@@ -70,6 +69,9 @@ function drop(event) {
   if (!(event.currentTarget.hasChildNodes())) {
     //ドロップ先にドラッグされた要素を追加
     event.currentTarget.appendChild(drag_elm);
+    //再生位置を始めに戻すことで連打に対応
+    ketteion.currentTime = 0;
+    ketteion.play();
   }
   //ブラウザのデフォルト動作の抑制
   event.preventDefault();
@@ -159,6 +161,16 @@ var timer = setInterval(() => {
     document.result.submit();
     // タイマー終了を伝える
     text = "終了";
+  }
+
+  if(diffSec <= 5500){
+    timeron1.play();
+    $("#remaining_time").css("color", "#CA4829")
+  }
+  if(diffSec <= 1650){
+    timeron1.pause();
+    timeron2.play();
+    $("#remaining_time").css("color", "#CA4829")
   }
 
   //正解している　かつ　拍手音を鳴らした時間が800ミリ秒より短いなら
