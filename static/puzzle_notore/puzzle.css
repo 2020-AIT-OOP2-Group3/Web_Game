@@ -1,0 +1,39 @@
+body{
+  background-color: rgb(248, 248, 125)
+}
+.icon{
+  min-width: 100px;
+  min-height: 100px;
+  width: 70%;
+  height: 100%;
+  filter: drop-shadow(0 0 0.75rem grey);
+}
+
+a{
+  display:block
+}
+
+.box{
+  /* 子要素を横並びにする */
+  display: flex;
+  /*　子要素を左から並べる設定*/  
+  flex-direction: row;
+}
+
+.text{
+  filter: drop-shadow(0 0 0.75rem grey);
+  color:rgba(0, 0, 0, 0.781)
+}
+
+h1,p{
+  color:#B67B03;
+  filter: drop-shadow(0 0 0.75rem grey);
+}
+h3{
+  filter: drop-shadow(0 0 0.75rem grey);
+}
+
+
+
+
+
