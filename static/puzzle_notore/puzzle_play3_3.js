@@ -1,5 +1,5 @@
 var random_piece_array = [1, 2, 3, 4, 5, 6, 7, 8, 9]//ピースの番号を格納
-var img_array = ["choujyou", "jyuudou", "shiba", "sugina", "sunahama", "yama"]//(頂上の写真,柔道の写真,柴犬の写真....)
+var img_array = ["choujyou", "kirin", "shiba", "sugina", "sunahama", "yama"]//(頂上の写真,キリンの写真,柴犬の写真....)
 var remaining_time = document.querySelector("#remaining_time"); //残り時間
 const startTime = Date.now();//ゲームスタート時刻
 var result = "";//結果「complete」or「incomplete」

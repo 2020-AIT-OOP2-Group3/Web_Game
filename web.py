@@ -396,26 +396,29 @@ def puzzle_result():
 
     get_point = 0  # 変数の宣言
     level_name = "" #レベル名の宣言
+    display_img = "" #表示する画像(喜び or 落ち込み)
     #-獲得ポイント算出-
     if completeORincomplete == "complete":
-        message = "完成"
+        message = "ゲームクリア！おめでとう！"
+        display_img = "yorokobi.png"
         if level == "elementary":
             level_name = "初級"
-            get_point = 2
-        elif level == "intermediate":
-            level_name = "中級"
             get_point = 5
+        elif level == "intermediate":
+            level_name = "中級"
+            get_point = 20
         elif level == "advanced":
             level_name = "上級"
-            get_point = 20
+            get_point = 100
     else:
+        message = "ゲームオーバー!残念！"
+        display_img = "ochikomi.png"
         if level == "elementary":
             level_name = "初級"
         elif level == "intermediate":
             level_name = "中級"
         elif level == "advanced":
             level_name = "上級"
-        message = "未完成"
         get_point = 0
     #獲得ポイントを四捨五入
     print(get_point)
@@ -442,7 +445,7 @@ def puzzle_result():
         json.dump(json_data, f, ensure_ascii=False, indent=4,
                   sort_keys=True, separators=(',', ': '))
 
-    return render_template('puzzle_notore/puzzle_result.html',get_point=get_point,userName=session["name"],point=point,message=message,level_name=level_name)
+    return render_template('puzzle_notore/puzzle_result.html',get_point=get_point,userName=session["name"],point=point,message=message,level_name=level_name,display_img=display_img)
 
 if __name__ == '__main__':
     app.run(host="localhost", port=8080, debug=True)
