@@ -19,6 +19,8 @@ var kaisu = document.querySelector("#kaisu"); //解いた問題の数
 var int_kaisu = 0; //解いた問題の数
 var OK_sound = document.querySelector("#OK_sound"); //正解音
 var NG_sound = document.querySelector("#NG_sound"); //不正解音
+var timeron1 = document.querySelector("#timeron1"); //タイマー音
+var timeron2 = document.querySelector("#timeron2"); //タイマー音
 
 OK_sound.volume = 0.10;
 NG_sound.volume = 0.08;
@@ -143,6 +145,16 @@ const timer = setInterval(() => {
   remaining_time = Math.ceil(diffSec / 1000);
   let text = "あと" + remaining_time + "秒";
 
+  if (diffSec <= 5500) {
+    timeron1.play();
+    $("div > #remaining_time").css("color", "#CA4829")
+  }
+  if (diffSec <= 1650) {
+    timeron1.pause();
+    timeron2.play();
+    $("div > #remaining_time").css("color", "#CA4829")
+  }
+
   // 0秒以下になったら
   if (diffSec <= 0) {
     //タイマーを停止
@@ -157,6 +169,7 @@ const timer = setInterval(() => {
   // 残り時間を画面に表示
   document.querySelector('#remaining_time').innerHTML = text;
 })
+
 
 
 
