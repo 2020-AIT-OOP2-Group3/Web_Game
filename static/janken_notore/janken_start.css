@@ -1,0 +1,82 @@
+body{
+  background-color: rgb(248, 248, 125)
+}
+
+.box{
+  /* 子要素を横並びにする */
+  display: flex;
+  /*　子要素を左から並べる設定*/  
+  flex-direction: row;
+}
+
+.text{
+  filter: drop-shadow(0 0 0.75rem grey);
+  color:rgba(0, 0, 0, 0.781)
+}
+
+.title{
+  color:#B67B03;
+  filter: drop-shadow(0 0 0.75rem grey);
+}
+
+img{
+  width: 50%;
+  height: auto;
+}
+
+body {
+  background-color: rgb(248, 248, 125)
+}
+
+.box {
+  /* 子要素を横並びにする */
+  display: flex;
+  /*　子要素を左から並べる設定*/
+  flex-direction: row;
+  z-index: 1;
+}
+
+.text {
+  filter: drop-shadow(0 0 0.75rem grey);
+  color: rgba(0, 0, 0, 0.781)
+}
+
+.title {
+  color: #B67B03;
+  filter: drop-shadow(0 0 0.75rem grey);
+}
+
+img {
+  width: 50%;
+  height: auto;
+}
+
+#hukidashi2 {
+  margin-top: -100px;
+}
+
+.yuudou {
+  margin-top: 100px;
+}
+
+.text2 {
+  margin-top: -280px;
+  margin-left: 70px;
+}
+#woman {
+  margin-top: 30px;
+  margin-left: 200px;
+}
+
+.kage {
+  filter: drop-shadow(0 0 0.75rem grey);
+}
+
+.hukidashi_text {
+  line-height: 5px;
+}
+
+
+
+
+

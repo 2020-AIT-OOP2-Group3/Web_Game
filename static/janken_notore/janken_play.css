@@ -1,11 +1,11 @@
 body{
-  background-color: rgba(234, 0, 255, 0.171)
+  background-color: rgb(248, 248, 125)
 }
 
 /* 残り時間 */
 #remaining_time{
   color:rgba(0, 0, 0, 0.781);
-  filter: drop-shadow(0 0 0.75rem orange);
+  filter: drop-shadow(0 0 0.75rem grey);
   font-size: 48px;
   margin-left: 70px;
   margin-top: 60px;
@@ -15,7 +15,7 @@ body{
 #question_text{
   filter: drop-shadow(0 0 0.75rem grey);
   text-align: center;
-  background-color: rgba(0, 255, 242, 0.151);
+  font-weight: bold;
 }
 
 .question_text{
@@ -32,7 +32,7 @@ body{
 .hukidashi{
   width: 200px;
   height: auto;
-  filter: drop-shadow(0 0 0.75rem orange);
+  filter: drop-shadow(0 0 0.75rem grey);
 }
 .kaisu{
   margin-top: 70px;
