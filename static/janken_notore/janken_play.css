@@ -1,0 +1,89 @@
+body{
+  background-color: rgb(248, 248, 125)
+}
+
+/* 残り時間 */
+#remaining_time{
+  color:rgba(0, 0, 0, 0.781);
+  filter: drop-shadow(0 0 0.75rem grey);
+  font-size: 48px;
+  margin-left: 70px;
+  margin-top: 60px;
+}
+
+/* 問題文 */
+#question_text{
+  filter: drop-shadow(0 0 0.75rem grey);
+  text-align: center;
+  font-weight: bold;
+}
+
+.question_text{
+  text-align: center;
+}
+
+/* フォームの送信ボタンや入力欄を非表示にするためのクラス */
+.hide{
+  /* 表示を非表示にする */
+  visibility:hidden;
+}
+
+/* 回数を表示する吹き出し */
+.hukidashi{
+  width: 200px;
+  height: auto;
+  filter: drop-shadow(0 0 0.75rem grey);
+}
+.kaisu{
+  margin-top: 70px;
+  margin-left: -145px;
+  font-size: 30px;
+}
+
+.box{
+  /* 子要素を横並びにする */
+  display: flex;
+  /* アイテムを中央に寄せる  */
+  justify-content: center;
+  align-items: center;
+}
+
+#hand1{
+  box-shadow: 0 2px 0;
+  display: block;
+}
+#hand2{
+  margin-left: 40px;
+  box-shadow: 0 2px 0;
+  display: block;
+}
+
+.box{
+  vertical-align:middle;
+}
+
+#hand1:active {
+  /*影をけす*/
+  box-shadow: none;
+  /*ボタンを下に移動*/
+  position: relative;
+  left:2px;
+}
+
+#hand1:focus {
+	outline:0;
+}
+
+#hand2:active {
+  /*影をけす*/
+  box-shadow: none;
+  /*ボタンを下*/
+  position: relative;
+  left:2px;
+}
+
+#hand2:focus {
+  outline:0;
+}
+
+

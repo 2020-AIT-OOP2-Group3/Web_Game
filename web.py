@@ -291,6 +291,13 @@ def janken_start():
                             point=session["point"],
                             name=session["name"])
 
+# じゃんけん脳トレ -ルールページ-
+
+
+@app.route('/janken/rule/', methods=["GET"])
+def janken_rule():
+    return render_template('janken_notore/janken_rule.html')
+
 # じゃんけん脳トレ -プレイページ-
 
 
