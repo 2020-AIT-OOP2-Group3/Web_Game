@@ -95,12 +95,12 @@ function judge(){
   //間違ってた回数が10回以上　or (正解した回数 - 間違ってた回数)が0回以下
   if(NGs.length >= 10 || (OKs.length - NGs.length)<=0){
     now_point = 0;
-  //(正解した回数 - 間違ってた回数)が20回を下回る
-  } else if((OKs.length - NGs.length) < 20){
+  //(正解した回数 - 間違ってた回数)が10回を下回る
+  } else if((OKs.length - NGs.length) < 10){
     now_point = (OKs.length - NGs.length) * 0.3;
-  //(正解した回数 - 間違ってた回数)が20回以上
-  }else if((OKs.length - NGs.length) >= 20){
-    now_point = 6 + 1*(OKs.length - NGs.length - 20)
+  //(正解した回数 - 間違ってた回数)が10回以上
+  }else if((OKs.length - NGs.length) >= 10){
+    now_point = 3 + 0.6*(OKs.length - NGs.length - 10)
   }
   now_point = now_point * 10;
   now_point = Math.round(now_point);

@@ -332,14 +332,14 @@ def janken_result():
     if NG_times >= 10 or (OK_times - NG_times) <= 0:
         display_img = "ochikomi.png"
         get_point = 0
-    # (正解した回数 - 間違ってた回数)が20回を下回る
-    elif (OK_times - NG_times) < 20:
+    # (正解した回数 - 間違ってた回数)が10回を下回る
+    elif (OK_times - NG_times) < 10:
         display_img = "yorokobi.png"
         get_point = (OK_times - NG_times) * 0.3
-    # (正解した回数 - 間違ってた回数)が20回以上
-    elif (OK_times - NG_times) >= 20:
+    # (正解した回数 - 間違ってた回数)が10回以上
+    elif (OK_times - NG_times) >= 10:
         display_img = "yorokobi.png"
-        get_point = 6 + 1*(OK_times - NG_times - 20)
+        get_point = 3 + 0.6*(OK_times - NG_times - 10)
     # 獲得ポイントを四捨五入
     print(get_point)
     get_point = int(round(get_point))
