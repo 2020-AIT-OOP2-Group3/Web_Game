@@ -11,39 +11,37 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='janken_notore/janken_play.css') }}">
 </head>
 <body onload="make_question()" class="container">
-  <div class="main-visual">
-    <a href="/janken/start/" class="btn btn-danger col-12 mt-5">中断する</a>
-    <!-- 吹き出しの中に回数を表示 -->
-    <!-- 吹き出しの隣に残り時間の表示 -->
-    <div><img src="../../static/janken_notore/hukidashi.png" class="hukidashi"><span id="kaisu" class="kaisu">0回目</span><span id="remaining_time" class="mt-5"></span></div>
-    <!-- 「どっちが勝ち?」、「どっちが負け？」の表示 -->
-    <h1 class="question_text"><span id="question_text"></span></h1>
-    <div class="box">
-      <!-- じゃんけんの手(左側) -->
-      <button id="hand1"></button>
-      <!-- じゃんけんの手(右側) -->
-      <button id="hand2"></button>
-    </div>
-    <script defer src="{{ url_for('static', filename='janken_notore/janken_play.js') }}"></script>
-    <!-- 正解数と不正解数を送信(非表示) -->
-    <form action="/janken/result/" method="post" name="result">
-      <input class="hide" type="number" id="OK_times" name="OK_times">
-      <input class="hide" type="number" id="NG_times" name="NG_times">
-      <input class="hide" type="submit">
-    </form>
-    <!-- 音声素材(非表) -->
-    <audio id="OK_sound">
-      <source class="hide" src="../../static/janken_notore/OK.mp3" type="audio/mp3">
-    </audio>
-    <audio id="NG_sound">
-      <source class="hide" src="../../static/janken_notore/NG.mp3" type="audio/mp3">
-    </audio>
-    <audio id="timeron1">
-      <source class="hide" src="../../static/puzzle_notore/timeron1.mp3" type="audio/mp3">
-    </audio>
-    <audio id="timeron2">
-      <source class="hide" src="../../static/puzzle_notore/timeron2.mp3" type="audio/mp3">
-    </audio>
+  <a href="/janken/start/" class="btn btn-danger col-12 mt-5">中断する</a>
+  <!-- 吹き出しの中に回数を表示 -->
+  <!-- 吹き出しの隣に残り時間の表示 -->
+  <div><img src="../../static/janken_notore/hukidashi.png" class="hukidashi"><span id="nowPoint" class="nowPoint">0pt</span><span id="remaining_time" class="mt-5"></span></div>
+  <!-- 「どっちが勝ち?」、「どっちが負け？」の表示 -->
+  <h1 class="question_text"><span id="question_text"></span></h1>
+  <div class="box">
+    <!-- じゃんけんの手(左側) -->
+    <button id="hand1"></button>
+    <!-- じゃんけんの手(右側) -->
+    <button id="hand2"></button>
   </div>
+  <script defer src="{{ url_for('static', filename='janken_notore/janken_play.js') }}"></script>
+  <!-- 正解数と不正解数を送信(非表示) -->
+  <form action="/janken/result/" method="post" name="result">
+    <input class="hide" type="number" id="OK_times" name="OK_times">
+    <input class="hide" type="number" id="NG_times" name="NG_times">
+    <input class="hide" type="submit">
+  </form>
+  <!-- 音声素材(非表) -->
+  <audio id="OK_sound">
+    <source class="hide" src="../../static/janken_notore/OK.mp3" type="audio/mp3">
+  </audio>
+  <audio id="NG_sound">
+    <source class="hide" src="../../static/janken_notore/NG.mp3" type="audio/mp3">
+  </audio>
+  <audio id="timeron1">
+    <source class="hide" src="../../static/puzzle_notore/timeron1.mp3" type="audio/mp3">
+  </audio>
+  <audio id="timeron2">
+    <source class="hide" src="../../static/puzzle_notore/timeron2.mp3" type="audio/mp3">
+  </audio>
 </body>
 </html>

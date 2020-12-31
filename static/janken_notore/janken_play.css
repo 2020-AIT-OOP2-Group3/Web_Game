@@ -18,6 +18,7 @@ body{
   font-weight: bold;
 }
 
+/* 「どっちが勝ち?」、「どっちが負け？」の表示  */
 .question_text{
   text-align: center;
 }
@@ -28,40 +29,43 @@ body{
   visibility:hidden;
 }
 
-/* 回数を表示する吹き出し */
+/* ポイント数を表示する吹き出し */
 .hukidashi{
   width: 200px;
   height: auto;
   filter: drop-shadow(0 0 0.75rem grey);
 }
-.kaisu{
+
+/* ポイントのリアルタイム表示 */
+.nowPoint{
   margin-top: 70px;
   margin-left: -145px;
   font-size: 30px;
 }
 
+/* ２つのじゃんけんの手を横並びにするために作成したクラス */
 .box{
   /* 子要素を横並びにする */
   display: flex;
   /* アイテムを中央に寄せる  */
   justify-content: center;
   align-items: center;
+  vertical-align:middle;
 }
 
+/* 右のじゃんけんの手 */
 #hand1{
   box-shadow: 0 2px 0;
   display: block;
 }
+/* 左のじゃんけんの手 */
 #hand2{
   margin-left: 40px;
   box-shadow: 0 2px 0;
   display: block;
 }
 
-.box{
-  vertical-align:middle;
-}
-
+/* 右側のじゃんけんの手が押されたら */
 #hand1:active {
   /*影をけす*/
   box-shadow: none;
@@ -70,10 +74,12 @@ body{
   left:2px;
 }
 
+/* 右側のじゃんけんの手がフォーカスされたら */
 #hand1:focus {
 	outline:0;
 }
 
+/* 左側のじゃんけんの手が押されたら */
 #hand2:active {
   /*影をけす*/
   box-shadow: none;
@@ -82,8 +88,8 @@ body{
   left:2px;
 }
 
+/* 左側のじゃんけんの手がフォーカスされたら */
 #hand2:focus {
   outline:0;
 }
-
 
