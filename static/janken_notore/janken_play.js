@@ -21,6 +21,8 @@ var OK_sound = document.querySelector("#OK_sound"); //正解音
 var NG_sound = document.querySelector("#NG_sound"); //不正解音
 var timeron1 = document.querySelector("#timeron1"); //タイマー音
 var timeron2 = document.querySelector("#timeron2"); //タイマー音
+var now_point; //リアルタイムのポイント数(ボタンを押すごとに変動)
+var nowPoint = document.querySelector("#nowPoint");//リアルタイムのポイント数(ボタンを押すごとに変動)
 
 OK_sound.volume = 0.10;
 NG_sound.volume = 0.08;
@@ -50,7 +52,7 @@ function make_question() {
 hand1.addEventListener('click', function () {
   //解いた問題の数
   int_kaisu += 1;
-  kaisu.innerText = int_kaisu + "回目";
+  // kaisu.innerText = int_kaisu + "回目";
   if (question == "win") {
     if (hand1.value <= 3) {
       //再生位置を始めに戻すことで連打に対応
@@ -83,14 +85,33 @@ hand1.addEventListener('click', function () {
     NGs.push("NG");
   }
   */
+  judge();
+  nowPoint.innerText = now_point + "pt";
   make_question();
 }, false);
+
+// リアルタイムでポイント数を算出する関数
+function judge(){
+  //間違ってた回数が10回以上　or (正解した回数 - 間違ってた回数)が0回以下
+  if(NGs.length >= 10 || (OKs.length - NGs.length)<=0){
+    now_point = 0;
+  //(正解した回数 - 間違ってた回数)が10回を下回る
+  } else if((OKs.length - NGs.length) < 10){
+    now_point = (OKs.length - NGs.length) * 0.3;
+  //(正解した回数 - 間違ってた回数)が10回以上
+  }else if((OKs.length - NGs.length) >= 10){
+    now_point = 3 + 0.6*(OKs.length - NGs.length - 10)
+  }
+  now_point = now_point * 10;
+  now_point = Math.round(now_point);
+  now_point = now_point / 10;
+}
 
 //右側の手がクリックされた時
 hand2.addEventListener('click', function () {
   //解いた問題の数
   int_kaisu += 1;
-  kaisu.innerText = int_kaisu + "回目";
+  // kaisu.innerText = int_kaisu + "回目";
   if (question == "win") {
     if (hand2.value >= 4) {
       //再生位置を始めに戻すことで連打に対応
@@ -127,6 +148,10 @@ hand2.addEventListener('click', function () {
     NGs.push("NG");
   }
   */
+ 　//リアルタイムでポイント数を算出する関数
+  judge();
+  //リアルタイムのポイント数を設定
+  nowPoint.innerText = now_point + "pt";
   make_question();
 }, false);
 

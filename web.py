@@ -325,17 +325,21 @@ def janken_result():
     point = int(point)
 
     get_point = 0  # 変数の宣言
+    display_img = "" #表示する画像(喜び or 落ち込み)
 
     # -獲得ポイント算出-
     # 間違ってた回数が10回以上　or (正解した回数 - 間違ってた回数)が0回以下
     if NG_times >= 10 or (OK_times - NG_times) <= 0:
+        display_img = "ochikomi.png"
         get_point = 0
-    # (正解した回数 - 間違ってた回数)が20回を下回る
-    elif (OK_times - NG_times) < 20:
+    # (正解した回数 - 間違ってた回数)が10回を下回る
+    elif (OK_times - NG_times) < 10:
+        display_img = "yorokobi.png"
         get_point = (OK_times - NG_times) * 0.3
-    # (正解した回数 - 間違ってた回数)が20回以上
-    elif (OK_times - NG_times) >= 20:
-        get_point = 6 + 1*(OK_times - NG_times - 20)
+    # (正解した回数 - 間違ってた回数)が10回以上
+    elif (OK_times - NG_times) >= 10:
+        display_img = "yorokobi.png"
+        get_point = 3 + 0.6*(OK_times - NG_times - 10)
     # 獲得ポイントを四捨五入
     print(get_point)
     get_point = int(round(get_point))
@@ -361,7 +365,7 @@ def janken_result():
         json.dump(json_data, f, ensure_ascii=False, indent=4,
                   sort_keys=True, separators=(',', ': '))
 
-    return render_template('janken_notore/janken_result.html', OK_times=OK_times, NG_times=NG_times, point=point, get_point=get_point)
+    return render_template('janken_notore/janken_result.html', OK_times=OK_times, NG_times=NG_times, point=point, get_point=get_point,display_img=display_img)
 
 #ーーーーーーーーーーーーーーーーーーーーーーーーパズル脳トレーーーーーーーーーーーーーーーーーーーーーー#
 # パズル脳トレ -スタートページ-
