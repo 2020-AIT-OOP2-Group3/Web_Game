@@ -2,7 +2,7 @@
     position:absolute;
     visibility:hidden;
 }
-body{
+.back{
     background-image: url('green.jpg');
     background-size: cover;
 }
@@ -27,15 +27,15 @@ body{
     color: #FFF;
     border-bottom: solid 4px #627295;
     border-radius: 3px;
-  }
-  .btn-square-shadow:active {
+}
+.btn-square-shadow:active {
     -webkit-transform: translateY(4px);
     transform: translateY(4px);
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
     border-bottom: none;
-  }
-  .title{
-    font-size:5em;
+}
+.title{
+  font-size:5em;
 	text-align:center;
 	line-height:0.95em;
 	font-weight:bold;
@@ -50,4 +50,18 @@ body{
 		0 0 0.20em #FFF59D,
 		0 0 0.20em #FFF59D,
 		0 0 0.50em #FFF59D;
-  }
+}
+.result-text{
+  text-align: center;
+  color: #ffffff;       
+  font-size: 36pt;       
+  text-shadow:
+       4px  4px 2px #000000,
+      -4px  4px 2px #000000,
+       4px -4px 2px #000000,
+      -4px -4px 2px #000000,
+       4px  0px 2px #000000,
+       0px  4px 2px #000000,
+      -4px  0px 2px #000000,
+       0px -4px 2px #000000;
+}

@@ -164,8 +164,8 @@ $(document).ready(function(){
   /* プレイヤーがカードを捨てる */
   function throwCardPlayer(){
     cardChk(0);
-
-    dispPlayerAllCard();
+    setTimeout(function(){dispPlayerAllCard();}, 1000);
+    
 
     /* カードがなくなった時の処理 */
     var ret = setRank(turnPlayer);

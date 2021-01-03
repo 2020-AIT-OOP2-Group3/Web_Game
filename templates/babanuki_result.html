@@ -2,17 +2,15 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../static/babanuki.css">
   <title>Document</title>
 </head>
-<body>
-    <h1>結果</h1>
-    <span>順位</span>
-    <span>{{rank0}}</span>
-    <span>獲得ポイント</span>
-    <span>{{get_point}}</span>
-    <span>現在のポイント数</span>
-    <span>{{point}}</span>
-    <a href="/menu/" class="button-return" method="POST">戻る</a>
+<body class="back">
+    <h1 class="title">結果</h1>
+    <p class="result-text">順位 {{rank0}}位<br>
+          獲得ポイント {{get_point}}pts<br>
+          現在のポイント数 {{point}}pts
+    </p>
+    <a class="btn-square-shadow" href="/menu/" class="button-return" method="POST" style="position: absolute; right: 50px; top: 50px;">戻る</a>
   </body>
 </html>
