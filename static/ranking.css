@@ -1,0 +1,22 @@
+.table {
+    font-size: 35px;
+    text-align: center;
+    background: white;
+    border-collapse: collapse;
+    width: 80%;
+    height: 80%;
+}
+
+.thead th, .tbody td {
+    padding: 10px 20px 20px 20px;
+    border: solid 2px black;
+}
+
+h1 {
+    color: white;
+}
+
+ul li {
+    color: white;
+    padding: 10px;
+}

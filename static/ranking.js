@@ -24,6 +24,13 @@ fetch("/ranking/get/").then(response => {
             td.innerText = elm.point;
             tr.appendChild(td);
 
+            var tmpname = elm.name
+            var username = document.getElementById('name').textContent
+            if(tmpname ==username){
+                console.log("tmp=user")
+                tr.style.background = "lavender"
+            }
+
             console.log(tr);
 
             // 1行分をtableタグ内のtbodyへ追加する
