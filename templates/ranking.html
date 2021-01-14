@@ -4,27 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ウェブゲーム(仮)</title>
+    <title>ウェブゲーム</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='web.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='ranking.css') }}">
+    <title>ランキング</title>
+    <script defer src="{{ url_for('static', filename='ranking.js') }}"></script>
 </head>
 
 <body>
     <header>
-        <h1>
-            <a href="#">ウェブゲーム(仮)</a>
-        </h1>
+        <h1>ポイントランキング</h1>
         <nav class="pc-nav">
             <ul>
-                <li>
-                    {{name}}
-                </li>
-                <a href="/ranking/">ranking</a>
+                <li id="name">{{name}}</li>
+                <li>point:{{point}}</li>
+                <li><a href="/menu/">メニュー</a></li>
                 <li><a href="/">【ログアウト】</a></li>
             </ul>
         </nav>
     </header>
     <div class="main-visual">
-        <h1>ランキング(仮作成)</h1>
+        <table class="table" id="player-list">
+            <thead class="thead">
+                <tr>
+                    <th scope="col">rank</th>
+                    <th scope="col">name</th>
+                    <th scope="col">point</th>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+                
+            </tbody>
+        </table>
     </div>
 </body>
 

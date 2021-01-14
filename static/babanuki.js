@@ -3,11 +3,18 @@ $(document).ready(function(){
   var handcard;
   var fin;
   var turnPlayer;
-
+  var rank0 = document.querySelector("#rank0");
+  var card_sound = document.querySelector("#card_sound");
+  card_sound.volume = 0.10;
 
   /* 開始ボタン押し */
   $("#start").on("click", function(){
 
+    displayMessage("手札が配られます");
+    $("#title").css("visibility", "hidden");
+    $("#com1").css("visibility", "visible");
+    $("#com2").css("visibility", "visible");
+    $("#com3").css("visibility", "visible");
     /* 初期化 */
     handcard = new Array();
     fin = new Array();
@@ -44,13 +51,14 @@ $(document).ready(function(){
       cardChk(i);
     }
 
-    /* プレイヤーのカードを表示する */
-    dispPlayerAllCard();
-
     /* コンピューターのカードを表示する */
     for(var i=1; i<4; i++){
       dispComputerAllCard(i)
     }
+
+    /* プレイヤーのカードを表示する */
+    dispPlayerAllCard();
+
     exeNextPlayer();
 
     disabledStart();
@@ -79,15 +87,16 @@ $(document).ready(function(){
           break;
         }
       }
-      displayMessage("コンピューター" + (i) + "からカードを取ってください。");
+      displayMessage("コンピューター" + (i) + "からカードを取ってください。\nあなたの番です");
     }else{
-      displayMessage("コンピューター"+ (turnPlayer) +"がカードを取ります。");
+      displayMessage("コンピューター"+ (turnPlayer) +"の番です");
       setTimeout(function(){getCardComputer();}, 1000);
     }
   }
 
   /* コンピューターがカードを取る */
 　function getCardComputer(){
+  card_sound.play();
     /* 誰から取るかを決める */
     var getIdx = turnPlayer;
     for( var i=0; i<3; i++){
@@ -111,6 +120,7 @@ $(document).ready(function(){
     /* 取られた人のカードを減らす */
     handcard[getIdx][getCardIdx]=-1;
     cardSride(getIdx);
+    
 
     if( getIdx == 0 ){
       dispPlayerAllCard();
@@ -122,7 +132,6 @@ $(document).ready(function(){
     var ret = setRank(getIdx);
 
     if( ret == 0 ){
-      displayMessage("コンピューター"+ (turnPlayer) +"がカードを捨てます。");
       setTimeout(function(){throwCardComputer();}, 1000);
     }else{
       enabledStart();
@@ -155,8 +164,8 @@ $(document).ready(function(){
   /* プレイヤーがカードを捨てる */
   function throwCardPlayer(){
     cardChk(0);
-
-    dispPlayerAllCard();
+    setTimeout(function(){dispPlayerAllCard();}, 1000);
+    
 
     /* カードがなくなった時の処理 */
     var ret = setRank(turnPlayer);
@@ -180,7 +189,7 @@ $(document).ready(function(){
         }
       }
     }
-
+    card_sound.play();
     /* プレイヤーのカードを追加 */
     handcard[0].push(handcard[y][x]);
     if(handcard[y][x]!=52){
@@ -196,7 +205,6 @@ $(document).ready(function(){
 
     /* コンピューターのカードがなくなった時の処理 */
     setRank(y);
-
     throwCardPlayer();
   }
 
@@ -224,6 +232,9 @@ $(document).ready(function(){
         for( var j=i+1; j<num; j++){
           if( arr[j]!=-1 && arr[j] != 52){
             if( arr[i]%13 == arr[j]%13 ){
+              if(idx==0){
+                displayMessage(((arr[i]%13)+1)+"が揃いました");
+              }
               arr[i] = -1;
               arr[j] = -1;
               break;
@@ -296,19 +307,22 @@ $(document).ready(function(){
 
       /* プレイヤーの勝利 */
       if( idx == 0 ){
-        alert(rank + "位です！");
-        displayRank( idx, rank );
+        displayRank( idx);
+        rank0.value = rank;
+        displayMessage("上がりました");
+        setTimeout(function(){document.result.submit();}, 2000);
         return 1;
       }else{
         if( rank == 3 ){
           /* コンピューター全員終了、プレイヤー負け */
-          alert("4位です！");
-          displayRank( idx, rank );
-          displayRank( 0, 4 );
+          displayRank( idx);
+          rank0.value = 4;
+          displayMessage("上がれませんでした");
+          setTimeout(function(){document.result.submit();}, 2000);
           return 1;
         }else{
           /* コンピューターまだ残っている */
-          displayRank( idx, rank );
+          displayRank( idx);
           return 0;
         }
       }
@@ -325,57 +339,63 @@ $(document).ready(function(){
   /* 指定位置のカードを指定番号で表示する */
   function display(x, y, num){
     var posStr = '#card' + y + x;
-    var left;
-    var top;
-    var rect;
-
-    if (num%13 <= 6){
-      left = 200 + x*50 - Math.floor(num/13)*50;
-      top = 150 + y*100 - num%13*75;
-      rect = 'rect(' + ((num%13)*75) + 'px ' + (((Math.floor(num/13)+1)*50)+1) + 'px ' + ((num%13+1)*75+1) + 'px ' + (Math.floor(num/13)*50) + 'px)';
-    }else{
-      left = 200 + x*50 - Math.floor(num/13)*50 - 200;
-      top = 150 + y*100 - (num%13-7)*75;
-      rect = 'rect(' + ((num%13-7)*75) + 'px ' + ((Math.floor(num/13)+1)*50+200) + 'px ' + ((num%13-6)*75+1) + 'px ' + (Math.floor(num/13)*50+200) + 'px)';
-    }
+    var left = x*80+50;
+    var top = y*400+600;
+   
+    $(posStr).attr('src','/static/CardImage/'+num+'.png');
+    $(posStr).css("height", 170);
     $(posStr).css("left", left);
     $(posStr).css("top", top);
-    $(posStr).css("clip", rect);
     $(posStr).css("visibility","visible");
   }
 
   /* 指定位置にジョーカーを表示する */
   function displayJoker( x, y ){
     var posStr = '#card' + y + x;
-    var left = x*50;
-    var top = y*100 - 300;
-    var rect = 'rect( 450px 251px 526px 200px)';
+    var left = x*80+50;
+    var top = y*400+600;
+
+    $(posStr).attr('src','/static/CardImage/52.png');
+    $(posStr).css("height", 170);
     $(posStr).css("left", left);
     $(posStr).css("top", top);
-    $(posStr).css("clip", rect);
     $(posStr).css("visibility","visible");
   }
 
   /* 指定位置に裏を表示する */
   function displayBack( x, y ){
     var posStr = '#card' + y + x;
-    var left = x*50 - 100;
-    var top = y*100 - 300;
-    var rect = 'rect( 450px 351px 526px 300px)';
+    var left;
+    var top;
+    if(y==1){
+      left = x*60+50;
+      top = y*300;
+    }else if(y==2){
+      left = x*60+500;
+      top = y*30;
+    }else if(y==3){
+      left = x*60+900;
+      top = y*100;
+    }
+    $(posStr).css("height", 120);
     $(posStr).css("left", left);
     $(posStr).css("top", top);
-    $(posStr).css("clip", rect);
     $(posStr).css("visibility","visible");
   }
 
   /* メッセージを表示する */
   function displayMessage(str){
-    $("#message").text(str);
+    var returnmessage;
+    text = document.getElementById("message");
+    returnmessage = str+'\n'+text.textContent;
+    $("#message").text(returnmessage);
   }
 
   /* 順位を表示する */
-  function displayRank( y, rank){
-    $("#rank"+y).text(rank+"位");
+  function displayRank(y){
+    if(y!=0){
+    displayMessage("コンピューター"+y+"が上がりました");
+  }
   }
 
   /* 順位を非表示にする */
@@ -386,13 +406,13 @@ $(document).ready(function(){
   /* 開始ボタン無効化 */
   function disabledStart(){
     $("#start").prop("disabled", true);
+    $("#start").css("visibility", "hidden");
   }
 
   /* 開始ボタン有効化 */
   function enabledStart(){
     $("#start").prop("disabled", false);
   }
-
 
   /* クリック */
   $("#card10").click(function(){clickCard(0,1)});

@@ -1,0 +1,57 @@
+body{
+  background-color: rgb(248, 248, 125)
+}
+
+/* プレイボタンと女性と吹き出しと吹き出しに書かれたコメントからなる要素 */
+.box{
+  /* 子要素を横並びにする */
+  display: flex;
+  /*　子要素を左から並べる設定*/  
+  flex-direction: row;
+  /*　子要素を左から並べる設定*/
+  flex-direction: row;
+  z-index: 1;
+}
+
+/* タイトル */
+.title{
+  color:#B67B03;
+  filter: drop-shadow(0 0 0.75rem grey);
+}
+
+body {
+  background-color: rgb(248, 248, 125)
+}
+
+/* 吹き出し */
+#hukidashi2 {
+  margin-top: -100px;
+}
+
+/* 女性と吹き出しと吹き出しに書かれたコメントからなる要素 */
+.yuudou {
+  margin-top: 100px;
+}
+
+/* 吹き出しに書かれた文字 */
+.text2 {
+  margin-top: -280px;
+  margin-left: 70px;
+  line-height: 5px;
+}
+
+/* 女性の写真 */
+#woman {
+  margin-top: 30px;
+  margin-left: 200px;
+}
+
+/* 影 */
+.kage {
+  filter: drop-shadow(0 0 0.75rem grey);
+}
+
+
+
+
+
